@@ -10,7 +10,7 @@ export default function Navbar() {
                 <NavLink to="/" className="text-sm font-semibold tracking-[0.3em] uppercase">Guzupa</NavLink>
 
                 <div className="hidden md:flex items-center md:gap-5 lg:gap-8 text-sm text-gray-600">
-                    <span className="cursor-pointer hover:text-black">Shop</span>
+                    <NavLink className={activeNavLink} to="/products">Shop</NavLink>
                     <NavLink className={activeNavLink} to="/collections">Collections</NavLink>
                     <NavLink className={activeNavLink} to="/journal">Journal</NavLink>
                     <NavLink className={activeNavLink} to="/about">About</NavLink>
@@ -23,7 +23,7 @@ export default function Navbar() {
                         <User className="flex md:hidden w-5 h-5" aria-label="Account / profile"/>
                         <span className="hidden md:block">Account</span>
                     </NavLink>
-                    <NavLink  to="/cart"><ShoppingCart size={17} className="inline" aria-label="Shopping Cart" /></NavLink>
+                    <NavLink  to="/cart" className={activeNavLink}><ShoppingCart size={17} className="inline" aria-label="Shopping Cart" /></NavLink>
                 </div>
             </div>
         </nav>
