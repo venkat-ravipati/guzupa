@@ -69,7 +69,7 @@ export default function Home() {
   }
 
   return (
-    <div className="mb-90">
+    <div>
       <div className="relative h-full flex justify-center items-center pt-13">
         <div className="relative w-full h-full">
           <img src={heroImageMobile} className="object-cover w-full md:hidden" alt="home page image" />
