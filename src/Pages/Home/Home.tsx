@@ -1,5 +1,4 @@
 import heroImage from "../../assets/images/Hero_Section_Guzupa.webp";
-import heroImageMobile from "../../assets/images/Hero_Section_Guzupa_Mobile_View.jpg";
 import menCategorySection from "../../assets/images/CategorySection/men_grid_CategorySection.webp"
 import womenCategorySection from "../../assets/images/CategorySection/womens_grid_CategorySection.webp"
 import accessoriesCategorySection from "../../assets/images/CategorySection/Accessories_CategorySection.webp"
@@ -72,8 +71,7 @@ export default function Home() {
     <div>
       <div className="relative h-full flex justify-center items-center pt-13">
         <div className="relative w-full h-full">
-          <img src={heroImageMobile} className="object-cover w-full md:hidden" alt="home page image" />
-          <img src={heroImage} className="object-cover min-h-screen w-full hidden md:flex" alt="home page image" />
+          <img src={heroImage} loading="eager" className="object-cover min-h-screen w-full flex" alt="home page image" />
           <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="absolute top-1/2 left-7 md:top-1/6 md:left-9 lg:top-1/4 md:m-8 text-white">
@@ -131,7 +129,7 @@ export default function Home() {
               <p className="uppercase font-sans py-4 md:py-3 text-sm tracking-widest">Exclusive Release</p>
               <h1 className="font-serif text-4xl py-4 md:py-3">Limited Capsule Drop</h1>
               <p className="font-sans text-sm tracking-wider py-2">Only available this week</p>
-              <button className="font-sans text-sm hover:pl-3 transtion-all duration-500 cursor-pointer my-5 border-b-1">Discover Now <ArrowRight size={20} className="inline ml-3"/></button>
+              <button className="font-sans text-sm hover:pl-3 transtion-all duration-500 cursor-pointer my-5 border-b">Discover Now <ArrowRight size={20} className="inline ml-3"/></button>
 
             </div>
           </div>
