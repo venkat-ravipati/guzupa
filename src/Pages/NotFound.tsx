@@ -7,7 +7,7 @@ export default function NotFound() {
     <ArrowRight />
   }
   return (
-    <div className="pt-25 h-full bg-[#F6F2F0] font-bold text-center">
+    <div className="pt-25 min-h-screen bg-[#F6F2F0] font-bold text-center">
       <p className="font-sans font-medium tracking-[0.3em] border-b-2 border-gray-300 py-2 w-fit mx-auto md:mb-4">
         ERROR
       </p>

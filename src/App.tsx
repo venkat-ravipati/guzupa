@@ -3,22 +3,31 @@ import Home from './Pages/Home/Home'
 import NotFound from './Pages/NotFound'
 import MainLayout from './Layouts/MainLayout'
 import ScrollToTop from './Layouts/ScrollToTop'
+import { lazy, Suspense } from 'react'
 
-
+const About = lazy(() => import('./Pages/About/About'));
+const AdminLayout = lazy(() => import('./Layouts/AdminLayout'))
 function App() {
   return (
     <>
       <ScrollToTop />
-      
-      <Routes>
-        
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Home/>} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
 
-        
-      </Routes>
+      <Suspense fallback={<div>Loading page…</div>}>
+        <Routes>
+
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+
+          <Route element={<AdminLayout />}>
+          </Route>
+
+          
+
+        </Routes>
+      </Suspense>
     </>
   )
 }
