@@ -36,8 +36,8 @@ export default function Footer() {
         <>
             <footer>
                 <section>
-                    <div className="w-full h-95 flex flex-col items-center bg-black/96 border-b border-b-zinc-900 text-white">
-                        <h1 className="font-serif mt-15 text-4xl md:text-5xl tracking-wider">Join the Guzupa</h1>
+                    <div className="w-full h-80 flex flex-col items-center bg-black/96 border-b border-b-zinc-900 text-white">
+                        <h1 className="font-serif mt-10 text-4xl md:text-5xl tracking-wider">Join the Guzupa</h1>
                         <p className="text-zinc-500 my-4  font-sans text-center">Be the first to discover new collections,<br />exclusive offers, and timeless inspiration.</p>
                         <form className="border-zinc-900 border my-3 sm:flex " action={formsubmit}>
                             <label>
