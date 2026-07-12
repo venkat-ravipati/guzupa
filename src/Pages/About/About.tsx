@@ -2,9 +2,13 @@ import aboutHeroImage from "../../assets/images/AboutPage/About-page-hero-img.we
 import storyClothingRack from "../../assets/images/AboutPage/about-story-clothing-rack.webp"
 import approachKnitwear from "../../assets/images/AboutPage/about-approach-knitwear.webp"
 import storeShowroom from "../../assets/images/AboutPage/about-store-showroom.webp"
-import { Phone, Clock, MapPin, Shirt, ArrowRight, ShieldCheck, Check, Sparkles, Globe } from "lucide-react"
+import { Phone, Clock, MapPin, Shirt, ArrowRight, ShieldCheck, Check, Sparkles, Globe, Outdent } from "lucide-react"
 import Button from "../../Components/Common/Button"
+import { Outlet, useNavigate } from "react-router"
+
 export default function About() {
+
+    const navigate = useNavigate();
 
     const iconMap = {
         Shirt,
@@ -55,6 +59,7 @@ export default function About() {
             description: "Timeless pieces, quality materials, designed to be worn for years."
         }
     ];
+
     const Info = [
         {
             icon: MapPin,
@@ -86,7 +91,7 @@ export default function About() {
                             <p className="tracking-wider text-zinc-800 px-1 font-medium py-3">ABOUT</p>
                             <div className="font-serif text-5xl md:py-5 lg:text-6xl">About Guzupa</div>
                             <p className="font-medium text-zinc-800 py-3">Guzupa is a curated online destination for timeless menswear. We carefully select each piece for its quality, design, and lasting value — so you can build a wardrobe that endures.</p>
-                            <button className="border-b-2 border-gray-200 font-medium text-black hover:px-3 py-4 px-1 md:inline block cursor-pointer tracking-[0.2em] transition-all duration-300">Our Story <ArrowRight className="inline ml-2" size={20} /></button>
+                            <button onClick={() => navigate("/about/our-story")} className="border-b-2 border-gray-200 font-medium text-black hover:px-3 py-4 px-1 md:inline block cursor-pointer tracking-[0.2em] transition-all duration-300">Our Story <ArrowRight className="inline ml-2" size={20} /></button>
                         </div>
                         <div className="md:order-2 flex relative md:h-125 overflow-hidden">
                             <img src={aboutHeroImage} className="w-full object-top h-full object-cover" loading="lazy" alt="about_hero_image" aria-label="about page image" />
@@ -127,7 +132,7 @@ export default function About() {
                                 <p>Guzupa was founded on a simple belief: great style starts with thoughtful choices. We travel, research, and collaborate with independent labels and established names to bring you pieces that define modern timelessness.</p>
                                 <p className="py-5">We don't follow the seasons; we focus on what lasts.</p>
                             </div>
-                            <button className="border-b-2 border-gray-200 font-medium text-black hover:px-3 px-1 md:pt-4 py-2 md:py-0 lg:pt-8 md:inline block cursor-pointer tracking-wider transition-all duration-300">Read More <ArrowRight className="inline ml-2" size={20} /></button>
+                            <button onClick={() => navigate("/about/our-story")} className="border-b-2 border-gray-200 font-medium text-black hover:px-3 px-1 md:pt-4 py-2 md:py-0 lg:pt-8 md:inline block cursor-pointer tracking-wider transition-all duration-300">Learn More About Our Story<ArrowRight className="inline ml-2" size={20} /></button>
                         </div>
                     </div>
                 </section>
@@ -176,7 +181,7 @@ export default function About() {
                 </section>
 
                 <section>
-                    <div className="bg-[#ece8e4] max-w-11/12 m-auto">
+                    <div className="bg-[#ece8e4] rounded-t-2xl max-w-11/12 m-auto">
                         <div className="grid md:grid-cols-2 gap-5 p-6 lg:p-16">
                             <div className="order-1 md:order-0 md:col-start-1 md:row-start-1">
                                 <p className="font-sans font-medium text-zinc-800 py-2">VISIT OUR STORE</p>

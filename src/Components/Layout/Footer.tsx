@@ -86,7 +86,7 @@ export default function Footer() {
                 </section>
 
                 <section>
-                    <div className="w-full text-xs text-zinc-400 font-sans h-16 px-3 py-1 md:py-0 items-center cursor-pointer md:flex bg-black/96 text-white justify-between">
+                    <div className="w-full text-xs text-zinc-400 font-sans h-16 px-3 py-1 md:py-0 items-center cursor-pointer md:flex bg-black/96 justify-between">
                         <p className="hidden md:flex hover:text-white">&copy; {new Date().getFullYear()} Atelier. All rights reserved.</p>
                         <div className="flex justify-between py-1 md:py-0">
                             <a href="" className=" hover:text-white text-sm">code by Venkat</a>

@@ -83,7 +83,7 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="px-8 md:px-12 lg:px-20 py-16">
+      <section className="px-8 md:px-12 lg:px-20 md:py-10 py-7">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {categories.map((category) => (
             <div
@@ -106,7 +106,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-8 md:px-12 lg:px-20 py-16">
+      <section className="px-8 md:px-12 lg:px-20 md:py-10 py-7">
         <div className="flex items-end justify-between mb-8">
           <h2 className="font-serif text-3xl md:text-4xl">New Arrivals</h2>
           <button onClick={() => navigate("/products")} className="text-xs tracking-[0.2em] border-b border-black pb-1 cursor-pointer">
