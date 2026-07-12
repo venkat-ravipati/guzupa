@@ -37,15 +37,15 @@ export default function Footer() {
             <footer>
                 <section>
                     <div className="w-full h-80 flex flex-col items-center bg-black/96 border-b border-b-zinc-900 text-white">
-                        <h1 className="font-serif mt-10 text-4xl md:text-5xl tracking-wider">Join the Guzupa</h1>
+                        <h1 className="font-serif mt-7 text-4xl md:text-5xl tracking-wider">Join the Guzupa</h1>
                         <p className="text-zinc-500 my-4  font-sans text-center">Be the first to discover new collections,<br />exclusive offers, and timeless inspiration.</p>
                         <form className="border-zinc-900 border my-3 sm:flex " action={formsubmit}>
                             <label>
                                 <input className="border-zinc-900 border  block focus:ring-2 outline-none focus:ring-black/20 bg-black/10 md:w-90 py-3 px-5 text-s" type="email" aria-label="email field" placeholder="ramesh@gmail.com" />
                             </label>
-                            <button className="border-zinc-900 py-1.5 sm:py-0 mt-2 sm:mt-0 hover:bg-black/70 block border w-full sm:w-10 cursor-pointer sm:flex justify-center items-center" aria-label="subscribe button"><span className="text-zinc-300 sm:hidden pr-3">subscribe</span><ArrowRight className="inline md:block" size={20} /></button>
+                            <button className="border-zinc-900 py-1.5 sm:py-0 mt-2 sm:mt-0 hover:pl-2 transition-all duration-300 hover:bg-black/70 block border w-full sm:w-10 cursor-pointer sm:flex justify-center items-center" aria-label="subscribe button"><span className="text-zinc-400 sm:hidden pr-3">subscribe</span><ArrowRight className="inline md:block text-zinc-500" size={17} /></button>
                         </form>
-                        <div className="py-3 text-zinc-500 font-sans flex justify-center w-full">
+                        <div className="py-2 text-zinc-500 font-sans flex justify-center w-full">
                             <a href="" target="_blank" className="hover:text-white transition-all duration-300">Instagram</a>
                             <a href="" target="_blank" className="ml-6 hover:text-white transition-all duration-300">WhatsApp</a>
                         </div>
@@ -54,7 +54,7 @@ export default function Footer() {
 
                 <section>
                     <div className="w-full items-center bg-black/96 text-white">
-                        <div className="grid grid-cols-4 md:grid-cols-8 px-5 gap-8 py-9 md:py-13 border-b-zinc-900 text-white border-b">
+                        <div className="grid grid-cols-4 md:grid-cols-8 px-5 gap-8 py-4 md:py-5 border-b-zinc-900 text-white border-b">
                             <div className="col-span-3 md:col-span-2">
                                 <h3 className="font-serif text-zinc-100 text-3xl pb-1">Guzupa</h3>
                                 <p className="font-sans font-light text-zinc-500">

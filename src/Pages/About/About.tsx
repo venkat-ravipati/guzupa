@@ -106,7 +106,7 @@ export default function About() {
                                         <div className="mb-5 p-3 md:p-0 bg-gray-200 md:bg-cream rounded-full"><Icon /></div>
                                         <div className="px-6 md:px-0">
                                             <p className="font-serif text-1xl font-bold my-2 tracking-wider">{checklist.title}</p>
-                                            <p className="font-sans text-sm py-1 ">{checklist.text}</p>
+                                            <p className="font-sans text-sm">{checklist.text}</p>
                                         </div>
                                     </div>
                                 </div>
