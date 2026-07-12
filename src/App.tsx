@@ -8,16 +8,19 @@ import { lazy, Suspense } from 'react'
 const About = lazy(() => import('./Pages/About/About'));
 const AdminLayout = lazy(() => import('./Layouts/AdminLayout'))
 const OurStory = lazy(() => import('./Pages/About/OurStory'))
+const Journal = lazy(() => import('./Pages/Journal/Journal'))
+
 function App() {
   return (
     <>
       <ScrollToTop />
 
-      <Suspense fallback={<div className='m-auto py-20'>Loading page…</div>}>
+      <Suspense fallback={<div>Loading page…</div>}>
         <Routes>
 
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/journal" element={<Journal />} />
             <Route path="/about" element={<About />} />
             <Route path="/about/our-story" element={<OurStory />} />
             <Route path="*" element={<NotFound />} />

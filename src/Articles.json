@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Timeless by Design",
+    "category": "Style",
+    "date": "May 12, 2025",
+    "readTime": "5 min read",
+    "excerpt": "Exploring the philosophy behind pieces that transcend seasons.",
+    "body": "Trends come and go, but good design remains. Our approach is rooted in proportion, material, and purpose, creating pieces that feel as relevant tomorrow as they do today."
+  },
+  {
+    "id": 2,
+    "title": "The Touch of Cashmere",
+    "category": "Materials",
+    "date": "May 8, 2025",
+    "readTime": "4 min read",
+    "excerpt": "Why we choose the world's finest fibers and how we care for them.",
+    "body": "Cashmere is graded not just by softness but by fiber length and micron count. Sourcing responsibly means working directly with herders in high-altitude regions."
+  },
+  {
+    "id": 3,
+    "title": "Milan: A Study in Form",
+    "category": "Culture",
+    "date": "May 2, 2025",
+    "readTime": "6 min read",
+    "excerpt": "Moments from our research trip and the influences that shape our collections.",
+    "body": "Milan has always balanced discipline and expression, a city where architecture and tailoring share the same grammar."
+  },
+  {
+    "id": 4,
+    "title": "The Art of Subtraction",
+    "category": "Craft",
+    "date": "Apr 28, 2025",
+    "readTime": "4 min read",
+    "excerpt": "How restraint and precision define the modern wardrobe.",
+    "body": "The hardest part of design is knowing what to leave out. Every seam, every button earns its place or it doesn't belong."
+  },
+  {
+    "id": 5,
+    "title": "Built to Last",
+    "category": "Materials",
+    "date": "Apr 21, 2025",
+    "readTime": "7 min read",
+    "excerpt": "Inside our workshop: construction, quality, and longevity.",
+    "body": "A garment built to last starts with reinforced seams and natural fibers that age gracefully rather than degrade over time."
+  },
+  {
+    "id": 6,
+    "title": "The Summer Edit",
+    "category": "Style",
+    "date": "Apr 15, 2025",
+    "readTime": "3 min read",
+    "excerpt": "Light layers, natural tones, and effortless combinations.",
+    "body": "Summer calls for fabrics that breathe and colors drawn from the season itself: sand, sage, and sun-bleached linen."
+  },
+  {
+    "id": 7,
+    "title": "Notes from the Atelier",
+    "category": "Craft",
+    "date": "Apr 9, 2025",
+    "readTime": "5 min read",
+    "excerpt": "A behind-the-scenes look at how a single piece comes together.",
+    "body": "Every garment passes through a dozen hands before it's finished. We wanted to document that process, from pattern to press."
+  },
+  {
+    "id": 8,
+    "title": "Color as Language",
+    "category": "Design",
+    "date": "Apr 2, 2025",
+    "readTime": "4 min read",
+    "excerpt": "How our seasonal palettes are chosen, and what they're meant to say.",
+    "body": "Color carries meaning before a single word is spoken. Choosing a palette is really choosing a mood for the season ahead."
+  },
+  {
+    "id": 9,
+    "title": "A Conversation on Craft",
+    "category": "Culture",
+    "date": "Mar 26, 2025",
+    "readTime": "8 min read",
+    "excerpt": "We sat down with our head tailor to talk about tradition and change.",
+    "body": "Twenty years in, our head tailor still hand-finishes every collar. We asked her why that hasn't changed, even as everything else has."
+  },
+  {
+    "id": 10,
+    "title": "Winter Layers, Reconsidered",
+    "category": "Style",
+    "date": "Mar 18, 2025",
+    "readTime": "5 min read",
+    "excerpt": "Rethinking how outerwear should feel, not just look.",
+    "body": "Warmth shouldn't mean bulk. This season's outerwear focuses on lighter insulation and closer, cleaner silhouettes."
+  }
+]
