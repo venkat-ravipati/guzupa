@@ -108,8 +108,8 @@ export default function OurStory() {
                             <div className="font-serif text-3xl md:text-4xl lg:text-6xl md:py-3">Continue exploring</div>
                             <p className="font-sans text-zinc-800 text-sm lg:text-base">Browse our collections or read more on the journal.</p>
                             <div className="md:flex gap-3 py-4">
-                                <button onClick={() =>{navigate('/collections')}} className="bg-black w-full lg:w-auto text-white p-3 hover:text-black hover:border cursor-pointer hover:bg-cream rounded-sm mt-2  tracking-wider text-xs font-bold lg:text-base">SHOP COLLECTION</button>
-                                <button onClick={() =>{navigate('/journal')}} className="bg-cream w-full lg:w-auto text-black rounded-sm border hover:text-white hover:bg-black cursor-pointer mt-2 font-bold tracking-wider border-black p-3 text-xs lg:text-base">READ THE JOURNAL</button>
+                                <button onClick={() =>{navigate('/collections')}} className="bg-black w-full lg:w-auto text-white p-3 hover:text-black hover:border cursor-pointer hover:bg-cream rounded-sm mt-2  tracking-wider text-xs font-bold transition-all duration-300">SHOP COLLECTION</button>
+                                <button onClick={() =>{navigate('/journal')}} className="bg-cream w-full lg:w-auto text-black rounded-sm border hover:text-white hover:bg-black cursor-pointer mt-2 font-bold tracking-wider border-black p-3 text-xs transition-all duration-300">READ THE JOURNAL</button>
                             </div>
                         </div>
                         <div className="hidden md:flex relative h-50 overflow-hidden p-4 ">

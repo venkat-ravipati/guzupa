@@ -3,7 +3,7 @@ import Home from './Pages/Home/Home'
 import NotFound from './Pages/NotFound'
 import MainLayout from './Layouts/MainLayout'
 import ScrollToTop from './Layouts/ScrollToTop'
-import { lazy, Suspense } from 'react'
+import { lazy } from 'react'
 
 const About = lazy(() => import('./Pages/About/About'));
 const AdminLayout = lazy(() => import('./Layouts/AdminLayout'))
@@ -15,7 +15,6 @@ function App() {
     <>
       <ScrollToTop />
 
-      <Suspense fallback={<div>Loading page…</div>}>
         <Routes>
 
           <Route element={<MainLayout />}>
@@ -29,10 +28,7 @@ function App() {
           <Route element={<AdminLayout />}>
           </Route>
 
-          
-
         </Routes>
-      </Suspense>
     </>
   )
 }
