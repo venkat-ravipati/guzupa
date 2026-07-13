@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Articles from "../../Articles.json"
+import Articles from "../../articles";
 import { ArrowLeft, ArrowRight, Dot, BookOpenText } from "lucide-react";
 
 interface Article {

@@ -1,8 +1,17 @@
-[
+import img1 from "./assets/images/Hero_Section_Guzupa.webp";
+import img2 from "./assets/images/Journal/TheTouchofCashmere.webp";
+import img3 from "./assets/images/CategorySection/men_grid_CategorySection.webp";
+import img4 from "./assets/images/Journal/TheArtofSubtraction.webp";
+import img5 from "./assets/images/Journal/BuilttoLast.webp";
+import img6 from "./assets/images/Journal/TheSummerEdit.webp";
+import img7 from "./assets/images/Journal/ColorasLanguage.webp";
+import img8 from "./assets/images/Journal/WinterLayers.webp";
+
+const articles = [
   {
     "id": 1,
     "title": "Timeless by Design",
-    "img":"src/assets/images/Hero_section_Guzupa.webp",
+    "img": img1,
     "category": "Style",
     "date": "May 12, 2025",
     "readTime": "5 min read",
@@ -12,7 +21,7 @@
   {
     "id": 2,
     "title": "The Touch of Cashmere",
-    "img":"src/assets/images/Journal/TheTouchofCashmere.webp",
+    "img": img2,
     "category": "Materials",
     "date": "May 8, 2025",
     "readTime": "4 min read",
@@ -22,7 +31,7 @@
   {
     "id": 3,
     "title": "Milan: A Study in Form",
-    "img":"src/assets/images/CategorySection/men_grid_CategorySection.webp",
+    "img": img3,
     "category": "Culture",
     "date": "May 2, 2025",
     "readTime": "6 min read",
@@ -32,7 +41,7 @@
   {
     "id": 4,
     "title": "The Art of Subtraction",
-    "img":"src/assets/images/Journal/TheArtofSubtraction.webp",
+    "img": img4,
     "category": "Craft",
     "date": "Apr 28, 2025",
     "readTime": "4 min read",
@@ -42,7 +51,7 @@
   {
     "id": 5,
     "title": "Built to Last",
-    "img":"src/assets/images/Journal/BuilttoLast.webp",
+    "img": img5,
     "category": "Materials",
     "date": "Apr 21, 2025",
     "readTime": "7 min read",
@@ -52,7 +61,7 @@
   {
     "id": 6,
     "title": "The Summer Edit",
-    "img":"src/assets/images/Journal/TheSummerEdit.webp",
+    "img": img6,
     "category": "Style",
     "date": "Apr 15, 2025",
     "readTime": "3 min read",
@@ -62,7 +71,7 @@
   {
     "id": 7,
     "title": "Color as Language",
-    "img":"src/assets/images/Journal/ColorasLanguage.webp",
+    "img": img7,
     "category": "Design",
     "date": "Apr 2, 2025",
     "readTime": "4 min read",
@@ -72,7 +81,7 @@
   {
     "id": 8,
     "title": "Winter Layers, Reconsidered",
-    "img":"src/assets/images/Journal/WinterLayers.webp",
+    "img": img8,
     "category": "Style",
     "date": "Mar 18, 2025",
     "readTime": "5 min read",
@@ -80,3 +89,5 @@
     "body": ["Warmth shouldn't mean bulk. This season's outerwear focuses on lighter insulation and closer, cleaner silhouettes." , "Advanced insulating materials allow garments to retain warmth while remaining lightweight and comfortable. This approach reduces unnecessary volume and creates outerwear that moves naturally with the body." , "The result is a more refined silhouette that feels both practical and polished. Clean lines, thoughtful construction, and precise proportions ensure that each piece provides protection from the cold without sacrificing elegance."] 
   }
 ]
+
+export default articles;
