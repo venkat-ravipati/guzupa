@@ -71,7 +71,7 @@ export default function Home() {
     <div>
       <div className="relative h-full flex justify-center items-center pt-13">
         <div className="relative w-full h-full">
-          <img src={heroImage} loading="eager" className="object-cover min-h-screen w-full flex" alt="home page image" />
+          <img src={heroImage} loading="eager" fetchPriority="high" className="object-cover min-h-screen w-full flex" alt="home page image" />
           <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="absolute top-1/2 left-7 md:top-1/6 md:left-9 lg:top-1/4 md:m-8 text-white">
