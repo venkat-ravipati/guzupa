@@ -28,10 +28,6 @@ export default function Footer() {
         },
     ];
 
-    function formsubmit() {
-
-    }
-
     return (
         <>
             <footer>
@@ -39,7 +35,7 @@ export default function Footer() {
                     <div className="w-full h-80 flex flex-col items-center bg-black/96 border-b border-b-zinc-900 text-white">
                         <h1 className="font-serif mt-7 text-4xl md:text-5xl tracking-wider">Join the Guzupa</h1>
                         <p className="text-zinc-500 my-4  font-sans text-center">Be the first to discover new collections,<br />exclusive offers, and timeless inspiration.</p>
-                        <form className="border-zinc-900 border my-3 sm:flex " action={formsubmit}>
+                        <form className="border-zinc-900 border my-3 sm:flex " action={() =>{}}>
                             <label>
                                 <input className="border-zinc-900 border  block focus:ring-2 outline-none focus:ring-black/20 bg-black/10 md:w-90 py-3 px-5 text-s" type="email" aria-label="email field" placeholder="ramesh@gmail.com" />
                             </label>

@@ -72,7 +72,7 @@ export default function Navbar() {
                     <NavLink to="/" onClick={() => { window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }) }} className="text-sm font-semibold tracking-[0.3em] uppercase">Guzupa</NavLink>
 
                     <div className="hidden md:flex items-center md:gap-5 lg:gap-8 text-sm text-gray-600">
-                        <div onMouseEnter={openShop} onMouseLeave={closeShopWithDelay} className="relative">
+                        <div onMouseEnter={openShop} onClick={() => { setIsShopHovered(false) }} onMouseLeave={closeShopWithDelay} className="relative">
                             <NavLink className={activeNavLink} to="/products">Shop</NavLink>
                         </div>
                         <NavLink className={activeNavLink} to="/collections">Collections</NavLink>
