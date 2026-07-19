@@ -16,22 +16,24 @@ function App() {
     <>
       <ScrollToTop />
 
-        <Routes>
+      <Routes>
 
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/journal" element={<Journal />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/about/our-story" element={<OurStory />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/journal" element={<Journal />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/about/our-story" element={<OurStory />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:gender" element={<Products />} />
+          <Route path="/products/:gender/:subCategory" element={<Products />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
 
-          <Route element={<AdminLayout />}>
-          
-          </Route>
+        <Route element={<AdminLayout />}>
 
-        </Routes>
+        </Route>
+
+      </Routes>
     </>
   )
 }
