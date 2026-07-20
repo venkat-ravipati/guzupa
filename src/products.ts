@@ -3,17 +3,20 @@ const defaultImage =
   "data:image/svg+xml;utf8," +
   encodeURIComponent(`
   <svg xmlns="http://www.w3.org/2000/svg" width="400" height="500">
-    <rect width="100%" height="100%" fill="#f3f4f6"/>
-    <rect x="100" y="70" width="200" height="250" rx="20" fill="#d1d5db"/>
-    <circle cx="200" cy="120" r="35" fill="#9ca3af"/>
-    <path d="M145 170 L255 170 L275 320 L125 320 Z" fill="#6b7280"/>
-    <text x="200" y="455" text-anchor="middle"
-      font-size="22"
-      font-family="Arial"
-      fill="#374151">
-      Men's Clothing
-    </text>
-  </svg>
+  <rect width="100%" height="100%" fill="#F3EEE9"/>
+  <rect x="100" y="70" width="200" height="250" rx="20" fill="#d1d5db"/>
+  <circle cx="200" cy="120" r="35" fill="#9ca3af"/>
+  <path d="M145 170 L255 170 L275 320 L125 320 Z" fill="#6b7280"/>
+  <text
+    x="200"
+    y="455"
+    text-anchor="middle"
+    font-size="22"
+    font-family="Arial"
+    fill="#374151">
+    Men's Clothing
+  </text>
+</svg>
 `);
 
 const products = [{

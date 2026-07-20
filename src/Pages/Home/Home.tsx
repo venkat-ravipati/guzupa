@@ -9,9 +9,9 @@ import { ArrowRight, Heart, IndianRupee } from "lucide-react";
 export default function Home() {
   const navigate = useNavigate();
   const categories = [
-    { name: "Women", image: womenCategorySection, path: "/products?category=women" },
-    { name: "Men", image: menCategorySection, path: "/products?category=men" },
-    { name: "Accessories", image: accessoriesCategorySection, path: "/products?category=accessories" },
+    { name: "Women", image: womenCategorySection, path: "/products/women" },
+    { name: "Men", image: menCategorySection, path: "/products/men" },
+    { name: "Accessories", image: accessoriesCategorySection, path: "/products/accessories" },
   ];
 
   const getCurrentCollection = () => {

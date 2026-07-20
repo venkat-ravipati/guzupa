@@ -3,7 +3,8 @@ import { User, Search, ShoppingCart, ArrowRight, Truck, MapPinned, RotateCcw, Lo
 import { useRef, useState } from "react";
 import dropDownImg from "../../assets/images/AboutPage/About-page-hero-img.webp"
 import { useNavigate } from "react-router";
-import cart from "../../assets/images/Icons/cart.svg"
+import cart from "../../assets/images/Icons/cart.svg";
+import {menLinks , womenLinks} from "../../data/categories"
 
 export default function Navbar() {
     const [isShopHovered, setIsShopHovered] = useState(false);
@@ -39,24 +40,6 @@ export default function Navbar() {
         text: "100% secure checkout"
     }]
 
-    const menLinks = [
-        { label: 'New Arrivals', href: '/products/men/new-arrivals' },
-        { label: 'Outerwear', href: '/products/men/outerwear' },
-        { label: 'Knitwear', href: '/products/men/knitwear' },
-        { label: 'Shirts', href: '/products/men/shirts' },
-        { label: 'Trousers', href: '/products/men/trousers' },
-        { label: 'T-Shirts', href: '/products/men/t-shirts' },
-        { label: 'Denim', href: '/products/men/denim' },
-        { label: 'Baggy Pants', href: '/products/men/baggy-pants' },
-    ];
-
-    const womenLinks = [
-        { label: 'Baggy Pants', href: '/products/women/baggy-pants' },
-        { label: 'Dresses', href: '/products/women/dresses' },
-        { label: 'Tops', href: '/products/women/tops' },
-        { label: 'Skirts', href: '/products/women/skirts' },
-    ];
-
     const collectionsLinks = [
         { label: 'Spring / Summer', href: '/collections/spring-summer' },
         { label: 'Monsoon', href: '/collections/monsoon' },
@@ -82,7 +65,7 @@ export default function Navbar() {
                     </div>
 
                     <div className="flex items-center justify-between  gap-6 md:gap-3 lg:gap-5 text-sm text-gray-600">
-                        <span className="flex items-center cursor-pointer"><Search size={17} className="inline mr-1 cursor-pointer" aria-label="Search" />Search</span>
+                        <span className="flex items-center cursor-pointer"><Search size={17} className="inline mr-1 cursor-pointer" aria-label="Search" /><span className="hidden md:inline">Search</span></span>
                         <NavLink to="/wishlist" className={({ isActive }) => `hidden md:flex hover:text-black ${isActive ? "text-black" : "text-gray-600"}`}>Wishlist</NavLink>
                         <NavLink className={activeNavLink} to="/account">
                             <User className="flex md:hidden w-5 h-5" aria-label="Account / profile" />
