@@ -109,7 +109,7 @@ export default function Home() {
       <section className="px-8 md:px-12 lg:px-20 md:py-10 py-7">
         <div className="flex items-end justify-between mb-8">
           <h2 className="font-serif text-3xl md:text-4xl">New Arrivals</h2>
-          <button onClick={() => navigate("/products")} className="text-xs tracking-[0.2em] border-b border-black pb-1 cursor-pointer">
+          <button onClick={() => navigate("/products?category=New+Arrivals")} className="text-xs tracking-[0.2em] border-b border-black pb-1 cursor-pointer">
             VIEW ALL
           </button>
         </div>

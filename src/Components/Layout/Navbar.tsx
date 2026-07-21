@@ -65,7 +65,11 @@ export default function Navbar() {
                     </div>
 
                     <div className="flex items-center justify-between  gap-6 md:gap-3 lg:gap-5 text-sm text-gray-600">
-                        <span className="flex items-center cursor-pointer"><Search size={17} className="inline mr-1 cursor-pointer" aria-label="Search" /><span className="hidden md:inline">Search</span></span>
+                        <NavLink to="/search" className="flex relative items-center cursor-pointer">
+                            <Search size={17} className="inline mr-1 cursor-pointer" aria-label="Search" />
+                            <span className="hidden md:inline">Search</span>
+                            <div className="absolute -top-1 hover:border border-gray-300 rounded-2xl -left-1 -right-1 -bottom-1 inset-0 z-10 hidden md:block"/>
+                        </NavLink>
                         <NavLink to="/wishlist" className={({ isActive }) => `hidden md:flex hover:text-black ${isActive ? "text-black" : "text-gray-600"}`}>Wishlist</NavLink>
                         <NavLink className={activeNavLink} to="/account">
                             <User className="flex md:hidden w-5 h-5" aria-label="Account / profile" />

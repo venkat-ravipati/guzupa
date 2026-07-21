@@ -88,7 +88,7 @@ export default function Journal() {
                     {selectedArticle && (
                         <div key={selectedArticle.id}>
                             <div>
-                                <button onClick={() => setSelectedArticle(null)} className="hover:bg-stone-200 text-sm cursor-pointer px-4 py-5 md:px-8 md:py-3 md:m-3 rounded-3xl hover:px-6 transition-all duration-300"><ArrowLeft className="inline mr-2" size={20}/> Back to Journal </button>
+                                <button onClick={() => setSelectedArticle(null)} className="hover:bg-hover text-sm cursor-pointer px-4 py-5 md:px-8 md:py-3 md:m-3 rounded-3xl hover:px-6 transition-all duration-300"><ArrowLeft className="inline mr-2" size={20}/> Back to Journal </button>
                                 <div className="md:px-10 px-">
                                     <p className="font-sans font-bold text-zinc-800 p-5">{selectedArticle.category}</p>
                                     <div className="font-serif text-5xl lg:text-6xl p-4">{selectedArticle.title}</div>
