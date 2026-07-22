@@ -10,6 +10,8 @@ const AdminLayout = lazy(() => import('./Layouts/AdminLayout'))
 const OurStory = lazy(() => import('./Pages/About/OurStory'))
 const Journal = lazy(() => import('./Pages/Journal/Journal'))
 const Products = lazy(() => import('./Pages/Products/Products'))
+const AuthLayout = lazy(() => import('./Layouts/AuthLayout'))
+const Login = lazy(() => import('./Pages/Auth/Login'))
 
 function App() {
   return (
@@ -27,6 +29,10 @@ function App() {
           <Route path="/products/:gender" element={<Products />} />
           <Route path="/products/:gender/:subCategory" element={<Products />} />
           <Route path="*" element={<NotFound />} />
+        </Route>
+
+        <Route element={<AuthLayout />}>
+            <Route path="/login" element={<Login />}/>
         </Route>
 
         <Route element={<AdminLayout />}>

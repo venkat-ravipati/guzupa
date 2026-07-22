@@ -6,6 +6,7 @@ import { getDiscountedPrice } from "../../utils/getDiscountedPrice";
 import * as Slider from "@radix-ui/react-slider";
 import { useParams, useNavigate, useSearchParams } from "react-router";
 import { menLinks, womenLinks } from "../../data/categories";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function Products() {
     const [openFilters, setOpenFilters] = useState(false);
@@ -78,8 +79,7 @@ export default function Products() {
 
     const filteredProducts = useMemo(() => {
         return sortedProducts.filter((product) => {
-            const matchesCategory = selectedCategories.length == 0 ? true : selectedCategories.includes("New Arrivals") ? product.newArrivals === true : selectedCategories.includes(product.subCategory);
-            const matchesColor = selectedColors.length == 0 || product.colors.some((color) => selectedColors.includes(color))
+            const matchesCategory = selectedCategories.length == 0 ? true : selectedCategories.includes("New Arrivals") ? product.newArrivals === true : selectedCategories.includes("Bestsellers") ? product.bestseller === true : selectedCategories.includes(product.subCategory); const matchesColor = selectedColors.length == 0 || product.colors.some((color) => selectedColors.includes(color))
             const matchesSize = selectedSize.length == 0 || product.sizes.some((size) => selectedSize.includes(size))
             const discountPrice = getDiscountedPrice(product.price, product.discount)
             const matchesPrice = discountPrice >= priceRange.min && discountPrice <= priceRange.max;
@@ -139,6 +139,11 @@ export default function Products() {
         return word.charAt(0).toUpperCase() + word.slice(1);
     }
     const header = gender ? capitalize(gender) : "All"
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } }
+    } as const;
 
     return (
         <section className="bg-cream pt-13">
@@ -272,145 +277,161 @@ export default function Products() {
                         <div className="grid md:grid-cols-3 grid-cols-2 xl:grid-cols-4 2xl:grid-cols-5">
                             {filteredProducts.map((product) => {
                                 return (
-                                    <div key={product.id} className="py-2">
+                                    <motion.div
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true, amount: 0.2 }}
+                                        variants={cardVariants} 
+                                        key={product.id} className="py-2">
                                         <ProductsCard product={product} />
-                                    </div>
+                                    </motion.div>
                                 )
                             })}
                         </div>
                     </div>
                 </div>
             </div>
-            {openFilters && (
-                <div className="fixed inset-0 z-50 h-auto md:hidden ">
-                    <div className="absolute inset-0 bg-black/10" onClick={() => setOpenFilters(false)} />
-                    <div className="absolute left-0 right-0 rounded-t-2xl h-full w-full top-20  bg-cream p-5 overflow-y-auto">
-                        <div className="flex items-center justify-between">
-                            <p className="text-gray-800 text-sm font-bold tracking-wider">Filters</p>
-                            <button onClick={() => setOpenFilters(false)}><X size={20} /></button>
-                        </div>
-                        <div className="flex items-center justify-between py-2 mt-2 border-b border-gray-300">
-                            <p className="text-gray-800 text-xs font-light tracking-wider">{filteredProducts.length} Items</p>
-                            <button className="text-xs lg:text-xs text-zinc-800 underline hover:bg-hover transition-transform transform duration-300 rounded-md hover:font-medium cursor-pointer px-2 py-1 font-light tracking-wide"
-                                onClick={() => {
-                                    setPriceRange({ min: 0, max: 5000 });
-                                    if (!gender) { clearFilter(); }
-                                    else {
-                                        navigate(`/products/${gender}`);
+            <AnimatePresence>
+                {openFilters && (
+                    <div className="fixed inset-0 z-50 h-auto md:hidden ">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="absolute inset-0 bg-black/10" onClick={() => setOpenFilters(false)} />
+                        <motion.div
+                            initial={{ y: "100vh" }}
+                            animate={{ y: 0 }}
+                            exit={{ y: "100vh" }}
+                            transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
+                            className="absolute left-0 right-0 rounded-t-2xl bottom-0 w-full h-[80%]  bg-cream p-5 overflow-y-auto">
+                            <div className="flex items-center justify-between">
+                                <p className="text-gray-800 text-sm font-bold tracking-wider">Filters</p>
+                                <button onClick={() => setOpenFilters(false)}><X size={20} /></button>
+                            </div>
+                            <div className="flex items-center justify-between py-2 mt-2 border-b border-gray-300">
+                                <p className="text-gray-800 text-xs font-light tracking-wider">{filteredProducts.length} Items</p>
+                                <button className="text-xs lg:text-xs text-zinc-800 underline hover:bg-hover transition-transform transform duration-300 rounded-md hover:font-medium cursor-pointer px-2 py-1 font-light tracking-wide"
+                                    onClick={() => {
+                                        setPriceRange({ min: 0, max: 5000 });
+                                        if (!gender) { clearFilter(); }
+                                        else {
+                                            navigate(`/products/${gender}`);
 
-                                    }
-                                }}>
-                                Clear All</button>
-                        </div>
-                        <div className="h-auto pb-70">
-                            <div className="border-b border-gray-300 py-2">
-                                <div className="text-xs text-black font-bold flex items-center tracking-wide cursor-pointer py-1 transition-all duration-300 justify-between" onClick={() => toggleMobileSection("subCategory")}><p>Category</p><ChevronDown size={16} className={`transition-transform duration-200 mr-2 ${openfilter.subCategory ? "rotate-180" : "rotate-0"}`} /></div>
-                                <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openfilter.subCategory ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
-                                    {openfilter.subCategory && (
-                                        !gender ? (
-                                            (categories.map((category) =>
-                                            (
-                                                <div key={category} onClick={() => toggleCategory(category)} className={`text-sm hover:bg-hover px-2 justify-between rounded-md flex cursor-pointer mt-1 hover:text-black py-1 w-full ${(category === "All" ? selectedCategories.length == 0 : selectedCategories.includes(category)) ? "text-black font-bold" : "text-zinc-600 font-medium"}`}>
-                                                    <p>{category}</p>
-                                                    <p>{getCategoryCount(category)}</p>
+                                        }
+                                    }}>
+                                    Clear All</button>
+                            </div>
+                            <div className="h-auto pb-70">
+                                <div className="border-b border-gray-300 py-2">
+                                    <div className="text-xs text-black font-bold flex items-center tracking-wide cursor-pointer py-1 transition-all duration-300 justify-between" onClick={() => toggleMobileSection("subCategory")}><p>Category</p><ChevronDown size={16} className={`transition-transform duration-200 mr-2 ${openfilter.subCategory ? "rotate-180" : "rotate-0"}`} /></div>
+                                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${openfilter.subCategory ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
+                                        {openfilter.subCategory && (
+                                            !gender ? (
+                                                (categories.map((category) =>
+                                                (
+                                                    <div key={category} onClick={() => toggleCategory(category)} className={`text-sm hover:bg-hover px-2 justify-between rounded-md flex cursor-pointer mt-1 hover:text-black py-1 w-full ${(category === "All" ? selectedCategories.length == 0 : selectedCategories.includes(category)) ? "text-black font-bold" : "text-zinc-600 font-medium"}`}>
+                                                        <p>{category}</p>
+                                                        <p>{getCategoryCount(category)}</p>
+                                                    </div>
+                                                )))
+                                            ) : (<div>
+                                                <div onClick={() => navigate(`/products/${gender}`)} className={`text-sm hover:bg-hover px-2 justify-between rounded-md flex cursor-pointer mt-1 hover:text-black py-1 w-full ${(!subCategory) ? "text-black font-bold" : "text-zinc-600 font-medium"}`}>
+                                                    <p>All</p>
+                                                    <p>{getCategoryCount("All")}</p>
                                                 </div>
-                                            )))
-                                        ) : (<div>
-                                            <div onClick={() => navigate(`/products/${gender}`)} className={`text-sm hover:bg-hover px-2 justify-between rounded-md flex cursor-pointer mt-1 hover:text-black py-1 w-full ${(!subCategory) ? "text-black font-bold" : "text-zinc-600 font-medium"}`}>
-                                                <p>All</p>
-                                                <p>{getCategoryCount("All")}</p>
+                                                {genderLinks.map((link) => (
+                                                    <div key={link.href} onClick={() => navigate(`/products/${gender}/${link.slug}`)} className={`text-sm hover:bg-hover px-2 justify-between rounded-md flex cursor-pointer mt-1 hover:text-black py-1 w-full ${((subCategory == link.slug)) ? "text-black font-bold" : "text-zinc-600 font-medium"}`}>
+                                                        <p>{link.label}</p>
+                                                        <p>{getCategoryCount(link.slug)}</p>
+                                                    </div>
+                                                ))}
                                             </div>
-                                            {genderLinks.map((link) => (
-                                                <div key={link.href} onClick={() => navigate(`/products/${gender}/${link.slug}`)} className={`text-sm hover:bg-hover px-2 justify-between rounded-md flex cursor-pointer mt-1 hover:text-black py-1 w-full ${((subCategory == link.slug)) ? "text-black font-bold" : "text-zinc-600 font-medium"}`}>
-                                                    <p>{link.label}</p>
-                                                    <p>{getCategoryCount(link.slug)}</p>
-                                                </div>
-                                            ))}
-                                        </div>
+                                            )
                                         )
-                                    )
-                                    }</div>
+                                        }</div>
 
-                            </div>
-                            <div className="border-b border-zinc-300 py-2 mt-1">
-                                <div className="text-xs text-black font-bold flex  items-center tracking-wide cursor-pointer transition-all duration-300 justify-between" onClick={() => toggleMobileSection("color")}><p>COLOR</p><ChevronDown size={16} className={`transition-transform duration-200 mr-2 ${openfilter.color ? "rotate-180" : "rotate-0"}`} /></div>
-                                <div className={`overflow-hidden transition-all duration-700 ease-in-out ${openfilter.color ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
-                                    {openfilter.color && colors.map((color) => (
-                                        <p key={color} onClick={() => toggleColor(color)} className={`text-sm hover:bg-hover rounded-md cursor-pointer mt-1  hover:text-black py-1 px-2 items-center flex w-full ${(selectedColors.includes(color)) ? "text-black font-bold" : "text-zinc-600 font-medium"}`}><span className="border w-3 h-3 block overflow-hidden mr-2 rounded-full" style={{ backgroundColor: color }} />{color}</p>
-                                    ))}
                                 </div>
-                            </div>
-                            <div className="border-b border-gray-300 py-2">
-                                <div className="text-xs text-black font-bold flex  items-center tracking-wide cursor-pointer py-1 transition-all duration-300 justify-between" onClick={() => toggleMobileSection("size")}><p>SIZE</p><ChevronDown size={16} className={`transition-transform duration-200 mr-2 ${openfilter.size ? "rotate-180" : "rotate-0"}`} /></div>
-                                <div className={`overflow-hidden transition-all duration-700 ease-in-out ${openfilter.size ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
-                                    <div className="grid md:grid-cols-4 grid-cols-6 lg:grid-cols-5 xl:grid-cols-6 gap-1">
-                                        {openfilter.size && sizes.map((size) =>
+                                <div className="border-b border-zinc-300 py-2 mt-1">
+                                    <div className="text-xs text-black font-bold flex  items-center tracking-wide cursor-pointer transition-all duration-300 justify-between" onClick={() => toggleMobileSection("color")}><p>COLOR</p><ChevronDown size={16} className={`transition-transform duration-200 mr-2 ${openfilter.color ? "rotate-180" : "rotate-0"}`} /></div>
+                                    <div className={`overflow-hidden transition-all duration-700 ease-in-out ${openfilter.color ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
+                                        {openfilter.color && colors.map((color) => (
+                                            <p key={color} onClick={() => toggleColor(color)} className={`text-sm hover:bg-hover rounded-md cursor-pointer mt-1  hover:text-black py-1 px-2 items-center flex w-full ${(selectedColors.includes(color)) ? "text-black font-bold" : "text-zinc-600 font-medium"}`}><span className="border w-3 h-3 block overflow-hidden mr-2 rounded-full" style={{ backgroundColor: color }} />{color}</p>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="border-b border-gray-300 py-2">
+                                    <div className="text-xs text-black font-bold flex  items-center tracking-wide cursor-pointer py-1 transition-all duration-300 justify-between" onClick={() => toggleMobileSection("size")}><p>SIZE</p><ChevronDown size={16} className={`transition-transform duration-200 mr-2 ${openfilter.size ? "rotate-180" : "rotate-0"}`} /></div>
+                                    <div className={`overflow-hidden transition-all duration-700 ease-in-out ${openfilter.size ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
+                                        <div className="grid md:grid-cols-4 grid-cols-6 lg:grid-cols-5 xl:grid-cols-6 gap-1">
+                                            {openfilter.size && sizes.map((size) =>
+                                            (
+                                                <p key={size} onClick={() => toggleSize(size)} className={`text-sm flex justify-center border border-gray-300 tracking-wider rounded-md cursor-pointer mt-3 py-2 px-2 w-full ${(selectedSize.includes(size)) ? "text-white bg-black font-bold" : "text-zinc-600 font-medium hover:text-black hover:bg-hover"}`}>
+                                                    {size}
+                                                </p>
+                                            ))}</div>
+                                    </div>
+                                </div>
+                                <div className="border-b border-gray-300 py-2">
+                                    <div className="text-xs text-black font-bold flex  items-center tracking-wide cursor-pointer py-1 transition-all duration-300 justify-between" onClick={() => toggleMobileSection("range")}><p>RANGE</p><ChevronDown size={16} className={`transition-transform duration-200 mr-2 ${openfilter.range ? "rotate-180" : "rotate-0"}`} /></div>
+                                    <div className={`overflow-hidden transition-all duration-700 ease-in-out ${openfilter.range ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
+                                        {openfilter.range && (<div className="py-1">
+                                            <div className="flex justify-between text-sm">
+                                                <p>{priceRange.min}</p>
+                                                <p>{priceRange.max}</p>
+                                            </div>
+                                            <div className="pt-1">
+                                                <Slider.Root
+                                                    className="relative flex items-center w-full h-6"
+                                                    min={0}
+                                                    max={5000}
+                                                    step={10}
+                                                    value={[priceRange.min, priceRange.max]}
+                                                    onValueChange={(newValues) => {
+                                                        setPriceRange({ min: newValues[0], max: newValues[1] });
+                                                    }}
+                                                >
+                                                    <Slider.Track className="bg-gray-200 relative flex-1 rounded-full h-1">
+                                                        <Slider.Range className="absolute bg-black rounded-full h-full" />
+                                                    </Slider.Track>
+                                                    <Slider.Thumb className="block w-4 h-4 bg-black rounded-full cursor-pointer" />
+                                                    <Slider.Thumb className="block w-4 h-4 bg-black rounded-full cursor-pointer" />
+                                                </Slider.Root>
+                                            </div>
+                                        </div>)}
+                                    </div>
+                                </div>
+                                <div className="border-b border-gray-300 py-2">
+                                    <div className="text-xs text-black font-bold flex  items-center tracking-wide cursor-pointer py-1 transition-all duration-300 justify-between" onClick={() => toggleMobileSection("brand")}><p>Brand</p><ChevronDown size={16} className={`transition-transform duration-200 mr-2 ${openfilter.brand ? "rotate-180" : "rotate-0"}`} /></div>
+                                    <div className={`overflow-hidden transition-all duration-700 ease-in-out ${openfilter.brand ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
+                                        {openfilter.brand && brands.map((brand) =>
                                         (
-                                            <p key={size} onClick={() => toggleSize(size)} className={`text-sm flex justify-center border border-gray-300 tracking-wider rounded-md cursor-pointer mt-3 py-2 px-2 w-full ${(selectedSize.includes(size)) ? "text-white bg-black font-bold" : "text-zinc-600 font-medium hover:text-black hover:bg-hover"}`}>
-                                                {size}
+                                            <p key={brand} onClick={() => toggleBrand(brand)} className={`text-sm hover:bg-hover rounded-md cursor-pointer mt-1 hover:text-black py-1 px-2 w-full ${(selectedBrand.includes(brand)) ? "text-black font-bold" : "text-zinc-600 font-medium"}`}>
+                                                {brand}
                                             </p>
-                                        ))}</div>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-                            <div className="border-b border-gray-300 py-2">
-                                <div className="text-xs text-black font-bold flex  items-center tracking-wide cursor-pointer py-1 transition-all duration-300 justify-between" onClick={() => toggleMobileSection("range")}><p>RANGE</p><ChevronDown size={16} className={`transition-transform duration-200 mr-2 ${openfilter.range ? "rotate-180" : "rotate-0"}`} /></div>
-                                <div className={`overflow-hidden transition-all duration-700 ease-in-out ${openfilter.range ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
-                                    {openfilter.range && (<div className="py-1">
-                                        <div className="flex justify-between text-sm">
-                                            <p>{priceRange.min}</p>
-                                            <p>{priceRange.max}</p>
-                                        </div>
-                                        <div className="pt-1">
-                                            <Slider.Root
-                                                className="relative flex items-center w-full h-6"
-                                                min={0}
-                                                max={5000}
-                                                step={10}
-                                                value={[priceRange.min, priceRange.max]}
-                                                onValueChange={(newValues) => {
-                                                    setPriceRange({ min: newValues[0], max: newValues[1] });
-                                                }}
-                                            >
-                                                <Slider.Track className="bg-gray-200 relative flex-1 rounded-full h-1">
-                                                    <Slider.Range className="absolute bg-black rounded-full h-full" />
-                                                </Slider.Track>
-                                                <Slider.Thumb className="block w-4 h-4 bg-black rounded-full cursor-pointer" />
-                                                <Slider.Thumb className="block w-4 h-4 bg-black rounded-full cursor-pointer" />
-                                            </Slider.Root>
-                                        </div>
-                                    </div>)}
-                                </div>
-                            </div>
-                            <div className="border-b border-gray-300 py-2">
-                                <div className="text-xs text-black font-bold flex  items-center tracking-wide cursor-pointer py-1 transition-all duration-300 justify-between" onClick={() => toggleMobileSection("brand")}><p>Brand</p><ChevronDown size={16} className={`transition-transform duration-200 mr-2 ${openfilter.brand ? "rotate-180" : "rotate-0"}`} /></div>
-                                <div className={`overflow-hidden transition-all duration-700 ease-in-out ${openfilter.brand ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
-                                    {openfilter.brand && brands.map((brand) =>
-                                    (
-                                        <p key={brand} onClick={() => toggleBrand(brand)} className={`text-sm hover:bg-hover rounded-md cursor-pointer mt-1 hover:text-black py-1 px-2 w-full ${(selectedBrand.includes(brand)) ? "text-black font-bold" : "text-zinc-600 font-medium"}`}>
-                                            {brand}
-                                        </p>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="fixed bottom-0 left-0 w-full px-2 py-4 bg-cream">
-                            <button className="m-auto p-3 font-medium w-full text-sm  bg-black text-white rounded-xl border" onClick={() => setOpenFilters(false)} >Apply filters ( {filteredProducts.length} )</button>
-                            <span className="py-2 block" />
-                            <button className="m-auto p-3 w-full font-medium text-sm text-black bg-white rounded-xl border"
-                                onClick={() => {
-                                    setPriceRange({ min: 0, max: 5000 });
-                                    if (!gender) { clearFilter(); }
-                                    else {
-                                        navigate(`/products/${gender}`);
+                            <div className="fixed bottom-0 left-0 w-full px-2 py-4 bg-cream">
+                                <button className="m-auto p-3 font-medium w-full text-sm  bg-black text-white rounded-xl border" onClick={() => setOpenFilters(false)} >Apply filters ( {filteredProducts.length} )</button>
+                                <span className="py-2 block" />
+                                <button className="m-auto p-3 w-full font-medium text-sm text-black bg-white rounded-xl border"
+                                    onClick={() => {
+                                        setPriceRange({ min: 0, max: 5000 });
+                                        if (!gender) { clearFilter(); }
+                                        else {
+                                            navigate(`/products/${gender}`);
 
-                                    }
-                                }}>
-                                Clear all
-                            </button>
-                        </div>
+                                        }
+                                    }}>
+                                    Clear all
+                                </button>
+                            </div>
+                        </motion.div>
                     </div>
-                </div>
-            )}
+                )}
+            </AnimatePresence>
         </section>
     )
 }

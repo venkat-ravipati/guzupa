@@ -7,7 +7,7 @@ export default function NotFound() {
     <ArrowRight />
   }
   return (
-    <div className="pt-25 min-h-screen bg-cream font-bold text-center">
+    <div className="pt-25 bg-cream font-bold text-center">
       <p className="font-sans font-medium tracking-[0.3em] border-b-2 border-gray-300 py-2 w-fit mx-auto md:mb-4">
         ERROR
       </p>
@@ -36,9 +36,9 @@ export default function NotFound() {
       </div>
       
       <div className="grid md:grid-cols-3">
-        <Button onclick={() => {}} text="New Arrivals" varient="ghost" icon={ArrowRight}/>
-        <Button onclick={() => {}} text="Best Sellers" varient="ghost" icon={ArrowRight}/>
-        <Button onclick={() => {}} text="Our Journal" varient="ghost" icon={ArrowRight}/>
+        <Button onclick={() => navigate("/products?category=New+Arrivals")} text="New Arrivals" varient="ghost" icon={ArrowRight}/>
+        <Button onclick={() => navigate("/products?category=Bestsellers")} text="Best Sellers" varient="ghost" icon={ArrowRight}/>
+        <Button onclick={() => navigate("/journal")} text="Our Journal" varient="ghost" icon={ArrowRight}/>
       </div>
     </div>
   )

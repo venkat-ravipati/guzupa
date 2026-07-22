@@ -31,6 +31,7 @@ export default function Home() {
 
   const newArrivals = () => {
     return productsData
+      .sort((a, b) => b.id - a.id)
       .filter((product) => product.newArrivals)
       .slice(0, 4)
       .map((product) => (
@@ -99,7 +100,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-black/25 group-hover:bg-black/35 transition" />
               <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
                 <h3 className="font-serif text-2xl md:text-3xl mb-3">{category.name}</h3>
-                <span className="text-xs tracking-[0.2em] border-b border-white pb-1">SHOP NOW</span>
+                <span className="text-xs tracking-[0.2em] border-b border-white pb-1">{category.name === "Accessories" ? "COMING SOON" : "SHOP NOW"}</span>
               </div>
             </div>
           ))}
@@ -122,14 +123,14 @@ export default function Home() {
       <section>
         <div className="relative h-70 overflow-hidden">
           <img src={heroImage} className="absolute inset-0 w-full h-full object-cover" loading="lazy" alt="capsule drop image" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-transparent" />
-          
+          <div className="absolute inset-0 bg-linear-to-r from-black via-black/75 to-transparent" />
+
           <div className="relative z-10 h-full text-white items-center p-7 md:p-10">
             <div className="max-w-md text-white">
               <p className="uppercase font-sans py-4 md:py-3 text-sm tracking-widest">Exclusive Release</p>
-              <h1 className="font-serif text-4xl py-4 md:py-3">Limited Capsule Drop</h1>
+              <h2 className="font-serif text-4xl py-4 md:py-3">Limited Capsule Drop</h2>
               <p className="font-sans text-sm tracking-wider py-2">Only available this week</p>
-              <button className="font-sans text-sm hover:pl-3 transtion-all duration-500 cursor-pointer my-5 border-b">Discover Now <ArrowRight size={20} className="inline ml-3"/></button>
+              <button className="font-sans text-sm hover:pl-3 transition-all duration-500 cursor-pointer my-5 border-b" onClick={() => navigate("/collections")}>Discover Now <ArrowRight size={20} className="inline ml-3" /></button>
 
             </div>
           </div>

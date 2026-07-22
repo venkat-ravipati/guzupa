@@ -6,16 +6,16 @@ export default function Footer() {
         {
             title: "SHOP",
             links: [
-                { label: "All Products", to: "/shop" },
-                { label: "New Arrivals", to: "/shop/new-arrivals" },
-                { label: "Best Sellers", to: "/shop/best-sellers" },
+                { label: "All Products", to: "/products" },
+                { label: "New Arrivals", to: "/products?category=New+Arrivals" },
+                { label: "Best Sellers", to: "/products?category=Bestsellers"},
             ],
         },
         {
             title: "COLLECTIONS",
             links: [
-                { label: "Women", to: "/collections/women" },
                 { label: "Men", to: "/collections/men" },
+                { label: "Women", to: "/collections/women" },
                 { label: "Lookbook", to: "/collections/lookbook" },
             ],
         },
@@ -63,11 +63,11 @@ export default function Footer() {
                                 {footerLinks.map((section) => {
                                     return (
                                         <div key={section.title} className="w-full">
-                                            <h4 className="text-zinc-300 font-sans py-1 tracking-wider text-xs">{section.title}</h4>
+                                            <h4 className="text-zinc-300 font-sans py-1 font-medium tracking-wider text-xs">{section.title}</h4>
                                             <ul>
                                                 {section.links.map((link) => {
                                                     return (
-                                                        <li key={link.to} className="font-sans font-light text-zinc-500 hover:text-white transition-all duration-500">
+                                                        <li key={link.to} className="font-sans font-light text-sm text-zinc-500 hover:text-white transition-all duration-500">
                                                             <Link to={link.to}>{link.label}</Link>
                                                         </li>
                                                     )
@@ -82,13 +82,13 @@ export default function Footer() {
                 </section>
 
                 <section>
-                    <div className="w-full text-xs text-zinc-400 font-sans h-16 px-3 py-1 md:py-0 items-center cursor-pointer md:flex bg-black/96 justify-between">
-                        <p className="hidden md:flex hover:text-white">&copy; {new Date().getFullYear()} Guzupa. All rights reserved.</p>
-                        <div className="flex justify-between py-1 md:py-0">
+                    <div className="w-full text-xs text-zinc-400 font-sans h-16 px-3 py-1 md:py-0 items-center md:flex bg-black/96 justify-between">
+                        <p className="hidden md:flex cursor-pointer hover:text-white">&copy; {new Date().getFullYear()} Guzupa. All rights reserved.</p>
+                        <div className="flex justify-between py-1 cursor-pointer md:py-0">
                             <a href="" className=" hover:text-white text-sm">code by Venkat</a>
                             <span className="md:hidden pr-5">&copy; {new Date().getFullYear()}</span>
                         </div>
-                        <p className="py-1 md:py-0"><span className="hover:text-white">Privacy Policy</span><span className="px-2 md:px-4 hover:text-white">Terms & Conditions</span></p>
+                        <p className="py-1 md:py-0 cursor-pointer"><span className="hover:text-white">Privacy Policy</span><span className="px-2 md:px-4 hover:text-white">Terms & Conditions</span></p>
                     </div>
                 </section>
             </footer>
