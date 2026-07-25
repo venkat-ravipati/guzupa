@@ -1,23 +1,6 @@
 import { Heart, IndianRupee } from "lucide-react";
 import { getDiscountedPrice } from "../../utils/getDiscountedPrice";
-
-type Product = {
-    id: number;
-    name: string;
-    category: string;
-    subCategory: string;
-    price: number;
-    discount: number;
-    brand: string;
-    rating: number;
-    stock: number;
-    sizes: string[];
-    colors: string[];
-    image: string;
-    description: string;
-    newArrivals: boolean;
-    bestseller: boolean
-};
+import {Product} from "../../types/product"
 
 type ProductCardProps = {
     product: Product;

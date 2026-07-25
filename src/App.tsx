@@ -12,7 +12,9 @@ const Journal = lazy(() => import('./Pages/Journal/Journal'))
 const Products = lazy(() => import('./Pages/Products/Products'))
 const AuthLayout = lazy(() => import('./Layouts/AuthLayout'))
 const Login = lazy(() => import('./Pages/Auth/Login'))
-
+const MobileShopPage = lazy(() => import('./Pages/MobileMenu/MobileShopPage'))
+const MobileCategoryPage = lazy(() => import('./Pages/MobileMenu/MobileCategoryPage'))
+const ProductDetail = lazy(() => import('./Pages/ProductDetail/ProductDetail'))
 function App() {
   return (
     <>
@@ -22,17 +24,20 @@ function App() {
 
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/menu/shop" element={<MobileShopPage />} />
+          <Route path="/menu/:slug" element={<MobileCategoryPage />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/about" element={<About />} />
           <Route path="/about/our-story" element={<OurStory />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:gender" element={<Products />} />
           <Route path="/products/:gender/:subCategory" element={<Products />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="*" element={<NotFound />} />
         </Route>
 
         <Route element={<AuthLayout />}>
-            <Route path="/login" element={<Login />}/>
+          <Route path="/login" element={<Login />} />
         </Route>
 
         <Route element={<AdminLayout />}>

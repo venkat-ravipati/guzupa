@@ -1,16 +1,19 @@
 import { NavLink } from "react-router";
-import { User, Search, ShoppingCart, ArrowRight, Truck, MapPinned, RotateCcw, LockKeyholeIcon } from "lucide-react"
+import { Search, Menu, ArrowRight, Truck, MapPinned, RotateCcw, LockKeyholeIcon } from "lucide-react"
 import { useRef, useState } from "react";
 import dropDownImg from "../../assets/images/AboutPage/About-page-hero-img.webp"
 import { useNavigate } from "react-router";
 import cart from "../../assets/images/Icons/cart.svg";
-import { menLinks, womenLinks } from "../../data/categories"
+import { menLinks, womenLinks, collectionsLinks } from "../../data/categories"
 import { motion, AnimatePresence } from "motion/react";
+import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
     const [isShopHovered, setIsShopHovered] = useState(false);
+    const [showMobileMenu, setshowMobileMenu] = useState(false);
     const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
     const navigate = useNavigate();
+
 
     const openShop = () => {
         if (closeTimeout.current) clearTimeout(closeTimeout.current);
@@ -41,19 +44,13 @@ export default function Navbar() {
         text: "100% secure checkout"
     }]
 
-    const collectionsLinks = [
-        { label: 'Spring / Summer', href: '/collections/spring-summer' },
-        { label: 'Monsoon', href: '/collections/monsoon' },
-        { label: 'Autumn / Winter', href: '/collections/autumn-winter' },
-        { label: 'Back to college', href: '/collections/back-to-college' }
-    ];
-
     const activeNavLink = ({ isActive }: any) =>
         isActive ? "text-black hover:text-black" : "text-gray-600 hover:text-black";
     return (
         <>
             <nav className="font-sans border-b border-gray-300  fixed top-0 left-0 right-0 bg-cream z-50">
-                <div className="flex items-center justify-between px-8 md:px-12 lg:px-20 py-4">
+                <div className="flex items-center justify-between px-6 md:px-12 lg:px-20 py-4">
+                    <div className="md:hidden" onClick={() => setshowMobileMenu(prev => !prev)}><Menu /></div>
                     <NavLink to="/" onClick={() => { window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }) }} className="text-sm font-semibold tracking-[0.3em] uppercase">Guzupa</NavLink>
 
                     <div className="hidden md:flex items-center md:gap-5 lg:gap-8 text-sm text-gray-600">
@@ -65,15 +62,14 @@ export default function Navbar() {
                         <NavLink className={activeNavLink} to="/about">About</NavLink>
                     </div>
 
-                    <div className="flex items-center justify-between  gap-6 md:gap-3 lg:gap-5 text-sm text-gray-600">
-                        <NavLink to="/search" className="flex relative items-center cursor-pointer">
+                    <div className="flex items-center md:justify-between justify-end gap-2 md:gap-3 lg:gap-5 text-sm text-gray-600">
+                        <NavLink to="/search" className={({ isActive }) =>`flex relative  items-center hover:text-black cursor-pointer ${isActive ? "text-black" : "text-gray-600"}`}>
                             <Search size={17} className="inline mr-1 cursor-pointer" aria-label="Search" />
                             <span className="hidden md:inline">Search</span>
                             <div className="absolute -top-1 hover:border border-gray-300 rounded-2xl -left-1 -right-1 -bottom-1 inset-0 z-10 hidden md:block" />
                         </NavLink>
                         <NavLink to="/wishlist" className={({ isActive }) => `hidden md:flex hover:text-black ${isActive ? "text-black" : "text-gray-600"}`}>Wishlist</NavLink>
-                        <NavLink className={activeNavLink} to="/account">
-                            <User className="flex md:hidden w-5 h-5" aria-label="Account / profile" />
+                        <NavLink className={activeNavLink} to="/login">
                             <span className="hidden md:block">Account</span>
                         </NavLink>
                         <NavLink to="/cart" className={activeNavLink}><img src={cart} className="inline" alt="cart" /></NavLink>
@@ -93,7 +89,7 @@ export default function Navbar() {
                                 <div className="col-span-3">
                                     <div className="pb-4">
                                         <p className="font-bold text-xs p-3 tracking-wider xl:px-6">SHOP</p>
-                                        <div className="font-serif text-4xl px-3 xl:px-6">Timeless pieces,<br />designed with purpose.</div>
+                                        <div className="font-serif text-4xl px-3 xl:px-6">Timeless styles,<br />thoughtfully curated.</div>
                                         <div className="grid grid-cols-3 gap-2 lg:gap-5 mt-4 text-sm h-full border-t border-gray-300 pt-4 m-1 lg:m-3">
                                             <div className="flex flex-col h-full lg:px-4 xl:px-6">
                                                 <p className="font-bold text-xs py-1">MEN</p>
@@ -134,13 +130,11 @@ export default function Navbar() {
                                                         </li>
                                                     ))}
                                                 </ul>
-
                                                 <NavLink to="/collections" className="mt-auto font-bold text-xs hover:px-2 transition-all duration-300 py-2">View All Collections<ArrowRight className="inline ml-1" size={16} /></NavLink>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="col-span-2">
                                     <div className="p-3">
                                         <div className="relative h-105 overflow-hidden rounded-2xl">
@@ -176,6 +170,9 @@ export default function Navbar() {
                             </div>
                         </motion.div>
                     )}
+                </AnimatePresence>
+                <AnimatePresence>
+                    {showMobileMenu && <MobileMenu setShowMobileMenu={setshowMobileMenu}/>}
                 </AnimatePresence>
             </nav>
         </>

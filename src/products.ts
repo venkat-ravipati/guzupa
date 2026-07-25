@@ -1,3 +1,4 @@
+import imgs from "./assets/images/test_product.png"
 
 const defaultImage =
   "data:image/svg+xml;utf8," +
@@ -30,8 +31,9 @@ const products = [{
   "rating": 4.5,
   "stock": 25,
   "sizes": ["S", "M", "L", "XL"],
-  "colors": ["Black", "White"],
+  "colors": ["Black", "White","Grey"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Premium cotton t-shirt.",
   "newArrivals": false,
   "bestseller": false
@@ -49,6 +51,7 @@ const products = [{
   "sizes": ["M", "L", "XL"],
   "colors": ["White"],
   "image": defaultImage,
+  "images": [imgs, imgs, imgs, defaultImage],
   "description": "Slim fit formal shirt.",
   "newArrivals": false,
   "bestseller": true
@@ -66,6 +69,7 @@ const products = [{
   "sizes": ["S", "M", "L"],
   "colors": ["Navy"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Comfortable polo t-shirt.",
   "newArrivals": true,
   "bestseller": true
@@ -83,6 +87,7 @@ const products = [{
   "sizes": ["M", "L"],
   "colors": ["Grey"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Warm knitted sweater.",
   "newArrivals": false,
   "bestseller": true
@@ -100,6 +105,7 @@ const products = [{
   "sizes": ["M", "L", "XL"],
   "colors": ["Black"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Classic bomber jacket.",
   "newArrivals": false,
   "bestseller": false
@@ -117,6 +123,7 @@ const products = [{
   "sizes": ["S", "L", "XL", "XXL"],
   "colors": ["Black"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Comfortable office trousers.",
   "newArrivals": false,
   "bestseller": false
@@ -134,6 +141,7 @@ const products = [{
   "sizes": ["M", "L", "XXL"],
   "colors": ["Blue"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Slim fit denim jeans.",
   "newArrivals": false,
   "bestseller": false
@@ -151,6 +159,7 @@ const products = [{
   "sizes": ["S", "L", "XL"],
   "colors": ["Light Blue"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Relaxed fit baggy jeans.",
   "newArrivals": false,
   "bestseller": false
@@ -168,6 +177,7 @@ const products = [{
   "sizes": ["XS", "M", "XL"],
   "colors": ["Blue"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "High-waisted baggy jeans.",
   "newArrivals": true,
   "bestseller": false
@@ -185,6 +195,7 @@ const products = [{
   "sizes": ["S", "M", "L", "XL"],
   "colors": ["White"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Soft oversized cotton t-shirt.",
   "newArrivals": false,
   "bestseller": false
@@ -202,6 +213,7 @@ const products = [{
   "sizes": ["M", "L", "XL"],
   "colors": ["Blue", "White"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Casual checked shirt.",
   "newArrivals": false,
   "bestseller": false
@@ -219,6 +231,7 @@ const products = [{
   "sizes": ["S", "M", "L"],
   "colors": ["Green"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Breathable polo for daily wear.",
   "newArrivals": false,
   "bestseller": false
@@ -236,6 +249,7 @@ const products = [{
   "sizes": ["M", "L"],
   "colors": ["Cream"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Premium cable knit sweater.",
   "newArrivals": false,
   "bestseller": false
@@ -253,6 +267,7 @@ const products = [{
   "sizes": ["M", "L", "XL"],
   "colors": ["Blue"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Classic blue denim jacket.",
   "newArrivals": false,
   "bestseller": false
@@ -270,6 +285,7 @@ const products = [{
   "sizes": ["S", "L", "XL"],
   "colors": ["Beige"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Comfort fit chinos.",
   "newArrivals": false,
   "bestseller": false
@@ -287,6 +303,7 @@ const products = [{
   "sizes": ["S", "L", "XL"],
   "colors": ["Black"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Stretch skinny jeans.",
   "newArrivals": false,
   "bestseller": false
@@ -304,6 +321,7 @@ const products = [{
   "sizes": ["M", "L", "XL", "XXL"],
   "colors": ["Grey"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Relaxed fit streetwear baggy jeans.",
   "newArrivals": false,
   "bestseller": false
@@ -321,6 +339,7 @@ const products = [{
   "sizes": ["XS", "S", "M"],
   "colors": ["Light Blue"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Wide-leg baggy jeans.",
   "newArrivals": false,
   "bestseller": false
@@ -338,6 +357,7 @@ const products = [{
   "sizes": ["S", "M", "L", "XL"],
   "colors": ["Black"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Graphic print cotton tee.",
   "newArrivals": false,
   "bestseller": false
@@ -355,6 +375,7 @@ const products = [{
   "sizes": ["M", "L", "XL"],
   "colors": ["Sky Blue"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Lightweight linen shirt.",
   "newArrivals": false,
   "bestseller": false
@@ -372,6 +393,7 @@ const products = [{
   "sizes": ["S", "M", "L"],
   "colors": ["Maroon"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Premium maroon polo.",
   "newArrivals": false,
   "bestseller": false
@@ -389,6 +411,7 @@ const products = [{
   "sizes": ["M", "L"],
   "colors": ["Navy"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Half zip knitted sweater.",
   "newArrivals": false,
   "bestseller": false
@@ -406,6 +429,7 @@ const products = [{
   "sizes": ["M", "L", "XL"],
   "colors": ["Olive"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Warm puffer jacket.",
   "newArrivals": false,
   "bestseller": false
@@ -423,6 +447,7 @@ const products = [{
   "sizes": ["M", "L", "XL", "XXL"],
   "colors": ["Olive"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Utility cargo trousers.",
   "newArrivals": false,
   "bestseller": false
@@ -440,6 +465,7 @@ const products = [{
   "sizes": ["M", "L", "XL"],
   "colors": ["Blue"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Stylish ripped denim.",
   "newArrivals": false,
   "bestseller": false
@@ -457,6 +483,7 @@ const products = [{
   "sizes": ["M", "L", "XL", "XXL"],
   "colors": ["Stone Wash"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Vintage wash baggy jeans.",
   "newArrivals": false,
   "bestseller": false
@@ -474,6 +501,7 @@ const products = [{
   "sizes": ["XS", "S", "M"],
   "colors": ["Black"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "High-rise relaxed fit baggy jeans.",
   "newArrivals": false,
   "bestseller": false
@@ -491,6 +519,7 @@ const products = [{
   "sizes": ["S", "M", "L", "XL"],
   "colors": ["Grey"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Everyday crew neck t-shirt.",
   "newArrivals": true,
   "bestseller": false
@@ -508,6 +537,7 @@ const products = [{
   "sizes": ["M", "L", "XL"],
   "colors": ["Light Blue"],
   "image": defaultImage,
+  "images": [defaultImage, defaultImage, defaultImage, defaultImage],
   "description": "Premium Oxford cotton shirt.",
   "newArrivals": true,
   "bestseller": true
