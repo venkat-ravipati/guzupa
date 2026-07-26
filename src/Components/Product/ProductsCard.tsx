@@ -1,19 +1,22 @@
 import { Heart, IndianRupee } from "lucide-react";
 import { getDiscountedPrice } from "../../utils/getDiscountedPrice";
 import {Product} from "../../types/product"
+import { useNavigate } from "react-router";
 
 type ProductCardProps = {
     product: Product;
 }
 
 export default function ProductsCard({ product }: ProductCardProps) {
+    const navigate = useNavigate();
+
     const discountedPrice = getDiscountedPrice(product.price, product.discount)
 
     return (
-        <div className="md:w-45 w-40 lg:w-60 m-auto py-3">
+        <div onClick={() => navigate(`/product/${product.id}`)} className="md:w-45 w-40 lg:w-60 m-auto py-3 cursor-pointer" >
             <div className="relative w-40 lg:h-80 h-60 md:w-45 lg:w-60">
                 <img src={product.image} loading="lazy" className="w-full object-cover rounded-md h-full" alt={product.name} />
-                <span className="absolute top-2 right-2 rounded-full p-2 bg-cream cursor-pointer hover:bg-black hover:text-white"><Heart size={18} /></span>
+                <span onClick={(e) => e.stopPropagation()} className="absolute top-2 right-2 rounded-full p-2 bg-cream cursor-pointer hover:bg-black hover:text-white"><Heart size={18} /></span>
                 {product.newArrivals ? (
                     <span className="absolute top-2 left-2 bg-cream text-black text-[10px] font-bold border border-gray-300 px-2 py-1 rounded uppercase tracking-wide">
                         New

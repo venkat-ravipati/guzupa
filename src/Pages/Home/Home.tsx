@@ -37,7 +37,7 @@ export default function Home() {
       .map((product) => (
         <div
           key={product.id}
-          onClick={() => navigate(`/products/${product.id}`)}
+          onClick={() => navigate(`/product/${product.id}`)}
           className="group cursor-pointer"
         >
           <div className="relative overflow-hidden bg-gray-100 aspect-4/5">

@@ -7,6 +7,7 @@ import * as Slider from "@radix-ui/react-slider";
 import { useParams, useNavigate, useSearchParams } from "react-router";
 import { menLinks, womenLinks } from "../../data/categories";
 import { motion, AnimatePresence } from "motion/react";
+import { allSizes } from "../../data/sizes";
 
 export default function Products() {
     const [openFilters, setOpenFilters] = useState(false);
@@ -52,7 +53,7 @@ export default function Products() {
 
     const categories = ["All", "New Arrivals", "Shirts", "T-Shirts", "Jackets", "Knitwear", "Jeans", "Trousers", "Baggys"];
     const colors = ["Black", "White", "Navy", "Grey", "Blue", "Light Blue", "Green", "Olive"]
-    const sizes = ["XS", "S", "M", "L", "XL", "XXL"]
+    //const sizes = ["XS", "S", "M", "L", "XL", "XXL"]
     const brands = ["Urban Wear", "Modern Fit", "Polo Club", "Winter Co", "Street Wear", "Denim Co", "Urban Denim"]
 
 
@@ -204,7 +205,7 @@ export default function Products() {
                             <div className="border-b border-gray-300 py-2">
                                 <div className="text-xs text-black font-bold flex  items-center tracking-wide cursor-pointer py-1 transition-all duration-300 justify-between" onClick={() => toggleSection("size")}><p>SIZE</p><ChevronDown size={16} className={`transition-transform duration-200 mr-2 ${openfilter.size ? "rotate-180" : "rotate-0"}`} /></div>
                                 <div className="grid md:grid-cols-4 grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-1">
-                                    {openfilter.size && sizes.map((size) =>
+                                    {openfilter.size && allSizes.map((size) =>
                                     (
                                         <p key={size} onClick={() => toggleSize(size)} className={`text-xs flex justify-center border border-gray-300 tracking-wider rounded-md cursor-pointer mt-3 py-1 px-2 w-full ${(selectedSize.includes(size)) ? "text-white bg-black font-bold" : "text-zinc-600 font-medium hover:text-black hover:bg-hover"}`}>
                                             {size}
@@ -364,7 +365,7 @@ export default function Products() {
                                     <div className="text-xs text-black font-bold flex  items-center tracking-wide cursor-pointer py-1 transition-all duration-300 justify-between" onClick={() => toggleMobileSection("size")}><p>SIZE</p><ChevronDown size={16} className={`transition-transform duration-200 mr-2 ${openfilter.size ? "rotate-180" : "rotate-0"}`} /></div>
                                     <div className={`overflow-hidden transition-all duration-700 ease-in-out ${openfilter.size ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
                                         <div className="grid md:grid-cols-4 grid-cols-6 lg:grid-cols-5 xl:grid-cols-6 gap-1">
-                                            {openfilter.size && sizes.map((size) =>
+                                            {openfilter.size && allSizes.map((size) =>
                                             (
                                                 <p key={size} onClick={() => toggleSize(size)} className={`text-sm flex justify-center border border-gray-300 tracking-wider rounded-md cursor-pointer mt-3 py-2 px-2 w-full ${(selectedSize.includes(size)) ? "text-white bg-black font-bold" : "text-zinc-600 font-medium hover:text-black hover:bg-hover"}`}>
                                                     {size}

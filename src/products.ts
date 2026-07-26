@@ -34,7 +34,7 @@ const products = [{
   "colors": ["Black", "White","Grey"],
   "image": defaultImage,
   "images": [defaultImage, defaultImage, defaultImage, defaultImage],
-  "description": "Premium cotton t-shirt.",
+  "description": "A classic black T-shirt featuring a comfortable fit, soft fabric, and a crew neckline for everyday wear. Perfect for pairing with jeans, shorts, or layered under jackets for a versatile look.Premium cotton t-shirt.",
   "newArrivals": false,
   "bestseller": false
 },
@@ -48,11 +48,11 @@ const products = [{
   "brand": "Modern Fit",
   "rating": 4.8,
   "stock": 18,
-  "sizes": ["M", "L", "XL"],
-  "colors": ["White"],
+  "sizes": ["S","M", "L", "XL"],
+  "colors": ["White","Black"],
   "image": defaultImage,
-  "images": [imgs, imgs, imgs, defaultImage],
-  "description": "Slim fit formal shirt.",
+  "images": [imgs, imgs, imgs, imgs],
+  "description": "A tailored white shirt designed with a slim fit for a clean, modern silhouette. Features a classic collar, button-down front, and versatile styling for both formal and casual occasions.Slim fit formal shirt.",
   "newArrivals": false,
   "bestseller": true
 },
@@ -70,7 +70,7 @@ const products = [{
   "colors": ["Navy"],
   "image": defaultImage,
   "images": [defaultImage, defaultImage, defaultImage, defaultImage],
-  "description": "Comfortable polo t-shirt.",
+  "description": "A classic navy polo shirt featuring a collared neckline, button placket, and a comfortable fit. Designed for effortless everyday wear, it pairs easily with jeans, chinos, or shorts.Comfortable polo t-shirt.",
   "newArrivals": true,
   "bestseller": true
 },
@@ -88,7 +88,7 @@ const products = [{
   "colors": ["Grey"],
   "image": defaultImage,
   "images": [defaultImage, defaultImage, defaultImage, defaultImage],
-  "description": "Warm knitted sweater.",
+  "description": "A cozy wool knit sweater designed to provide warmth and comfort during cooler weather. Features a soft textured knit and a timeless design that's easy to layer over shirts or wear on its own.Warm knitted sweater.",
   "newArrivals": false,
   "bestseller": true
 },
@@ -106,7 +106,7 @@ const products = [{
   "colors": ["Black"],
   "image": defaultImage,
   "images": [defaultImage, defaultImage, defaultImage, defaultImage],
-  "description": "Classic bomber jacket.",
+  "description": "A stylish bomber jacket featuring a zip-up front, ribbed cuffs, and a comfortable fit for everyday wear. Designed to add a modern edge while providing lightweight warmth and versatile layering.",
   "newArrivals": false,
   "bestseller": false
 },
@@ -116,7 +116,7 @@ const products = [{
   "category": "Men",
   "subCategory": "Trousers",
   "price": 1799,
-  "discount": 12,
+  "discount": 0,
   "brand": "Office Line",
   "rating": 4.3,
   "stock": 22,
@@ -124,7 +124,7 @@ const products = [{
   "colors": ["Black"],
   "image": defaultImage,
   "images": [defaultImage, defaultImage, defaultImage, defaultImage],
-  "description": "Comfortable office trousers.",
+  "description": "Tailored formal trousers designed with a clean, structured fit for a polished appearance. Perfect for office wear, business meetings, or special occasions, offering both comfort and timeless style. Comfortable office trousers.",
   "newArrivals": false,
   "bestseller": false
 },
@@ -142,7 +142,7 @@ const products = [{
   "colors": ["Blue"],
   "image": defaultImage,
   "images": [defaultImage, defaultImage, defaultImage, defaultImage],
-  "description": "Slim fit denim jeans.",
+  "description": "Classic blue denim jeans crafted for everyday comfort and long-lasting wear. Designed with a versatile fit that pairs effortlessly with T-shirts, shirts, and jackets for any occasion.",
   "newArrivals": false,
   "bestseller": false
 },
@@ -160,7 +160,7 @@ const products = [{
   "colors": ["Light Blue"],
   "image": defaultImage,
   "images": [defaultImage, defaultImage, defaultImage, defaultImage],
-  "description": "Relaxed fit baggy jeans.",
+  "description": "Relaxed-fit baggy jeans designed with a roomy silhouette for all-day comfort and effortless street-style appeal. Crafted from durable denim, they're perfect for pairing with oversized tees, hoodies, or sneakers.Relaxed fit baggy jeans.",
   "newArrivals": false,
   "bestseller": false
 },
@@ -178,7 +178,7 @@ const products = [{
   "colors": ["Blue"],
   "image": defaultImage,
   "images": [defaultImage, defaultImage, defaultImage, defaultImage],
-  "description": "High-waisted baggy jeans.",
+  "description": "Women's baggy jeans featuring a relaxed fit and wide-leg silhouette for effortless comfort and modern style. Made from durable denim, they're easy to pair with crop tops, tees, or oversized shirts for everyday wear.High-waisted baggy jeans.",
   "newArrivals": true,
   "bestseller": false
 },
@@ -196,7 +196,7 @@ const products = [{
   "colors": ["White"],
   "image": defaultImage,
   "images": [defaultImage, defaultImage, defaultImage, defaultImage],
-  "description": "Soft oversized cotton t-shirt.",
+  "description": "An oversized white T-shirt designed with a relaxed fit for all-day comfort and effortless style. Made from soft, breathable fabric, it's perfect for casual wear or layering with your favorite outfits.Soft oversized cotton t-shirt.",
   "newArrivals": false,
   "bestseller": false
 },
