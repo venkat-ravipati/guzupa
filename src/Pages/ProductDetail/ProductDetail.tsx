@@ -7,6 +7,7 @@ import { getDiscountedPrice } from "../../utils/getDiscountedPrice";
 import { allSizes } from "../../data/sizes";
 import ProductsCard from "../../Components/Product/ProductsCard";
 import { motion } from "motion/react";
+import { useCart } from "../../context/CartContext";
 
 export default function ProductDetail() {
     const navigate = useNavigate()
@@ -17,6 +18,7 @@ export default function ProductDetail() {
     const [selectedSize, setSelectedSize] = useState(product?.sizes[0] ?? "");
     const [selectedWishlist, setSelectedWishlist] = useState(false)
     const [showShipping, setShowShipping] = useState(false);
+    const { addToCart } = useCart();
 
     useEffect(() => {
         if (!product) {
@@ -55,8 +57,8 @@ export default function ProductDetail() {
                 <span>/</span>
                 <span className="text-black">{product.name}</span>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 px-8 md:px-12 lg:px-20 py-8">
-                <div className="col-span-2">
+            <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 xl:grid-cols-3 gap-5 px-8 md:px-12 lg:px-20 py-8">
+                <div className="md:col-span-3 lg:col-span-3 xl:col-span-2">
                     <div className="h-auto">
                         <img src={product.images[0]} onClick={() => setFullscreenImage(0)} className="w-full h-full" alt="product image 1" />
                     </div>
@@ -68,8 +70,8 @@ export default function ProductDetail() {
                         <img src={product.images[3]} onClick={() => setFullscreenImage(3)} className="w-full object-cover object-center" alt="product image 4" />
                     </div>
                 </div>
-                <div className="col-span-1 px-2">
-                    <div className="md:sticky top-13">
+                <div className="md:col-span-3 lg:col-span-2 xl:col-span-1 px-2">
+                    <div className="md:sticky md:top-13">
                         <p className="text-xs tracking-widest py-4 text-zinc-500 uppercase">
                             {product.subCategory}
                         </p>
@@ -101,7 +103,7 @@ export default function ProductDetail() {
                                 <p className="text-zinc-600 tracking-widest">SIZE</p>
                                 <p className="tracking-widest">{selectedSize}</p>
                             </div>
-                            <div className="flex">
+                            <div className="grid grid-cols-3 md:grid-cols-6">
                                 {allSizes.map((size) => {
                                     const isAvailable = product.sizes.includes(size);
                                     return (
@@ -109,7 +111,7 @@ export default function ProductDetail() {
                                             key={size}
                                             disabled={!isAvailable}
                                             onClick={() => isAvailable && setSelectedSize(size)}
-                                            className={`px-3 py-1 md:px-4 md:py-2 mr-2 rounded-sm border my-3 ${!isAvailable
+                                            className={`py-2 mr-2 rounded-sm border my-3 ${!isAvailable
                                                 ? "text-zinc-300 border-gray-300 line-through cursor-not-allowed"
                                                 : size === selectedSize
                                                     ? "text-white bg-black cursor-pointer"
@@ -131,7 +133,7 @@ export default function ProductDetail() {
                                 className={`flex-1 py-4 text-sm tracking-widest uppercase transition ${product.stock === 0
                                     ? "bg-hover border border-gray-300 text-gray-500 cursor-not-allowed"
                                     : "bg-black text-white cursor-pointer hover:bg-zinc-800"
-                                    }`} onClick={() => alert("Cart coming soon")}
+                                    }`} onClick={() => addToCart(product.id, colorName, selectedSize)}
                             >
                                 {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
                             </button>
@@ -157,12 +159,12 @@ export default function ProductDetail() {
                 </div>
             </div>
 
-            <section className="px-8 md:px-12 lg:px-20 py-10 border-t border-gray-300">
-                <div className="flex justify-between items-center">
-                    <h2 className="font-serif text-2xl md:text-3xl mb-6">You May Also Like</h2>
+            <section className=" md:px-12 lg:px-20 py-10 border-t border-gray-300">
+                <div className="px-7 flex justify-between items-center mb-6">
+                    <h2 className="font-serif text-2xl md:text-3xl">You May Also Like</h2>
                     <button className="font-serif hover:text-gray-500 text-xl cursor-pointer underline" onClick={() => navigate(`/products/?category=${product.subCategory}`)}>view All</button>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 overflow-hidden">
                     {relatedProducts.map((p) => (
                         <ProductsCard key={p.id} product={p} />
                     ))}
