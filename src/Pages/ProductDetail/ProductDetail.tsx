@@ -91,7 +91,7 @@ export default function ProductDetail() {
                             <div className="flex">
                                 {product.colors.map((color) => {
                                     return (
-                                        <button key={color} onClick={() => setColorName(color)} className={`p-4 mr-2 cursor-pointer rounded-full border border-gray-300 my-3 ${(color == colorName) && "ring-1 ring-offset-2 ring-black"} `} aria-label={color} style={{ background: color }} />
+                                        <button key={color} onClick={() => setColorName(color)} className={`p-3 md:p-4 mr-2 cursor-pointer rounded-full border border-gray-300 my-3 ${(color == colorName) && "ring-1 ring-offset-2 ring-black"} `} aria-label={color} style={{ background: color }} />
                                     )
                                 })}
                             </div>
@@ -109,7 +109,7 @@ export default function ProductDetail() {
                                             key={size}
                                             disabled={!isAvailable}
                                             onClick={() => isAvailable && setSelectedSize(size)}
-                                            className={`px-4 py-2 mr-2 rounded-sm border my-3 ${!isAvailable
+                                            className={`px-3 py-1 md:px-4 md:py-2 mr-2 rounded-sm border my-3 ${!isAvailable
                                                 ? "text-zinc-300 border-gray-300 line-through cursor-not-allowed"
                                                 : size === selectedSize
                                                     ? "text-white bg-black cursor-pointer"
