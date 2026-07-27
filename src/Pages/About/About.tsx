@@ -2,9 +2,9 @@ import aboutHeroImage from "../../assets/images/AboutPage/About-page-hero-img.we
 import storyClothingRack from "../../assets/images/AboutPage/about-story-clothing-rack.webp"
 import approachKnitwear from "../../assets/images/AboutPage/about-approach-knitwear.webp"
 import storeShowroom from "../../assets/images/AboutPage/about-store-showroom.webp"
-import { Phone, Clock, MapPin, Shirt, ArrowRight, ShieldCheck, Check, Sparkles, Globe, Outdent } from "lucide-react"
+import { Phone, Clock, MapPin, Shirt, ArrowRight, ShieldCheck, Check, Sparkles, Globe } from "lucide-react"
 import Button from "../../Components/Common/Button"
-import { Outlet, useNavigate } from "react-router"
+import { useNavigate } from "react-router"
 
 export default function About() {
 
@@ -94,7 +94,7 @@ export default function About() {
                             <button onClick={() => navigate("/about/our-story")} className="border-b-2 border-gray-200 font-medium text-black hover:px-3 py-4 px-1 md:inline block cursor-pointer tracking-[0.2em] transition-all duration-300">Our Story <ArrowRight className="inline ml-2" size={20} /></button>
                         </div>
                         <div className="md:order-2 flex relative md:h-125 overflow-hidden">
-                            <img src={aboutHeroImage} className="w-full object-top h-full object-cover" loading="lazy" alt="about_hero_image" aria-label="about page image" />
+                            <img src={aboutHeroImage} className="w-full object-top h-full object-cover" loading="lazy" alt="about_hero_image" />
                         </div>
                     </div>
                 </section>
@@ -123,7 +123,7 @@ export default function About() {
                 <section>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 border-b border-zinc-300">
                         <div className="relative md:h-125 overflow-hidden">
-                            <img src={storyClothingRack} className="w-full object-top h-full object-cover" loading="lazy" aria-label="image of cloths in rack" alt="rack of cloths" />
+                            <img src={storyClothingRack} className="w-full object-top h-full object-cover" loading="lazy" alt="rack of cloths" />
                         </div>
                         <div className="md:py-8 px-7 md:px-5 lg:px-10">
                             <p className="font-medium font-sans text-zinc-800 tracking-wider py-2">OUR STORY</p>
@@ -155,7 +155,7 @@ export default function About() {
                             </div>
                         </div>
                         <div className="relative sm:h-100 overflow-hidden pb-4 md:pb-0 px-7 md:px-0">
-                            <img src={approachKnitwear} className="w-full h-full object-cover md:rounded-none rounded-2xl" loading="lazy" aria-label="Our Approach" alt="Our Approach" />
+                            <img src={approachKnitwear} className="w-full h-full object-cover md:rounded-none rounded-2xl" loading="lazy" alt="Our Approach" />
                         </div>
                     </div>
                 </section>
@@ -187,29 +187,31 @@ export default function About() {
                                 <p className="font-sans font-medium text-zinc-800 py-2">VISIT OUR STORE</p>
                                 <h2 className="font-serif text-4xl lg:text-5xl py-5">Experience Guzupa<br />in person.</h2>
                                 <p className="font-sans font-medium text-zinc-800 pr-7">Visit our showroom to explore the collection in a refined, minimalist setting and receive personalized styling assistance from our team.</p>
-                                
+
                             </div>
                             <div className="order-2 md:col-start-2 md:row-span-2 md:row-start-1">
                                 <div className="relative h-100 rounded-xl overflow-hidden">
-                                    <img src={storeShowroom} className="w-full h-full object-cover" loading="lazy" aria-label="store image" alt="store image" />
+                                    <img src={storeShowroom} className="w-full h-full object-cover" loading="lazy" alt="store image" />
                                 </div>
                             </div>
                             <div className="md:py-10 order-3 md:order-0 md:col-start-1 md:row-start-2">
-                                    <Button onclick={() => { }} text="Get Directions" varient="roundblack" icon={ArrowRight} />
-                                </div>
+                                <Button onclick={() => {
+                                    window.open("https://www.google.com/maps/place/Guzupa/@13.0337755,77.7342535,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae11035011e30f:0x22595265506c10f3!8m2!3d13.0337703!4d77.7368284!16s%2Fg%2F11lmdjymkm?entry=ttu&g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D", "_blank");
+                                }} text="Get Directions" varient="roundblack" icon={ArrowRight} />
+                            </div>
                         </div>
                         <div className="border-b-2 max-w-5/6 border-zinc-300 m-auto" />
                         <div className="p-6 lg:px-10">
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 justify-center">
-                                {Info.map(({icon:Icon , title , lines } , index) => {
-                                    const isLast = index === Info.length-1;
-                                    return(
+                                {Info.map(({ icon: Icon, title, lines }, index) => {
+                                    const isLast = index === Info.length - 1;
+                                    return (
                                         <div key={index} className={`flex gap-2 md:justify-center border-zinc-300 ${!isLast ? "border-b md:border-b-0 md:border-r pb-3 md:pb-0" : ""}`}>
-                                            <div className="py-3"><Icon size={20}/></div>
+                                            <div className="py-3"><Icon size={20} /></div>
                                             <div>
                                                 <p className="font-serif py-2 lg:text-2xl">{title}</p>
                                                 {lines.map((line) => {
-                                                    return(
+                                                    return (
                                                         <p key={line} className="pt-1 font-sans text-sm">{line}</p>
                                                     )
                                                 })}

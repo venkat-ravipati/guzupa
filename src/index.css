@@ -4,5 +4,13 @@
   --font-sans: "Manrope", sans-serif;
   --font-serif: "Instrument Serif", serif;
   --font-modern-serif : "Antic Didone", serif;
-  --color-cream: #F6F2F0;
+  --color-cream: #F8F5F1;
+  --color-hover:#F3EEE9;
+  --color-selection: #DDD2C5;
+  --color-primary: #111111;
+}
+
+::selection {
+  background: var(--color-selection);
+  color: var(--color-primary);
 }

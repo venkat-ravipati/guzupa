@@ -49,7 +49,7 @@ export default function OurStory() {
                             <p className="font-sans text-zinc-800 py-3">Guzupa is a curated destination for menswear and womenswear. We travel the world to discover and select clothing from trusted brands and makers—pieces defined by quality, design, and longevity.</p>
                         </div>
                         <div className="order-2 flex relative md:h-125 overflow-hidden">
-                            <img src={OurstoryHeroImage} className="w-full object-top h-full object-cover" alt="Our Story" aria-label="our story hero image" />
+                            <img src={OurstoryHeroImage} className="w-full object-top h-full object-cover" alt="Our Story"/>
                         </div>
                     </div>
                 </section>
@@ -57,7 +57,7 @@ export default function OurStory() {
                 <section>
                     <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5 border-b border-zinc-300">
                         <div className="md:order-1 order-2 relative md:h-125 overflow-hidden p-4 md:p-7">
-                            <img src={ourMissionImage} className="w-full h-full object-cover rounded-xl" loading="lazy" aria-label="our mission" alt="Our Mission" />
+                            <img src={ourMissionImage} className="w-full h-full object-cover rounded-xl" loading="lazy" alt="Our Mission" />
                         </div>
                         <div className="md:order-2 order-1 md:p-7 px-7 md:px-12 lg:px-20">
                             <p className="font-sans text-zinc-800 font-medium py-4 tracking-wider">OUR MISSION</p>
@@ -75,12 +75,12 @@ export default function OurStory() {
                             <p className="font-sans text-zinc-800 py-3">From browsing to delivery, we make shopping simple and reliable.</p>
                             {deliveryOptions.map((item) => (
                                 <div key={item.id} className="flex items-center py-2">
-                                    <p className="font-sans text-sm md:text-base text-zinc-800">{item.icon && <item.icon className="inline-block mr-3 bg-stone-200 rounded-full" size={20} />} {item.text}</p>
+                                    <p className="font-sans text-sm md:text-base text-zinc-800"><item.icon className="inline-block mr-3 bg-stone-200 rounded-full" size={20} /> {item.text}</p>
                                 </div>
                             ))}
                         </div>
                         <div className="relative md:h-125 overflow-hidden p-4 md:p-7">
-                            <img src={packageImg} className="w-full h-full object-cover rounded-xl" loading="lazy" alt="package" aria-label="package image" />
+                            <img src={packageImg} className="w-full h-full object-cover rounded-xl" loading="lazy" alt="package" />
                         </div>
                     </div>
                 </section>
@@ -88,7 +88,7 @@ export default function OurStory() {
                 <section>
                     <div className="grid grid-cols-1 md:grid-cols-2 md:gap-5 border-b border-zinc-300">
                         <div className="order-2 md:order-1 relative md:h-110 overflow-hidden p-4 md:p-7">
-                            <img src={stylingImg} className="w-full h-full object-cover rounded-xl" loading="lazy" alt="Styling made easy" aria-label="Styling made easy image" />
+                            <img src={stylingImg} className="w-full h-full object-cover rounded-xl" loading="lazy" alt="Styling made easy" />
                         </div>
                         <div className="order-1 md:order-2 md:p-7 px-7 py-3 md:px-12 lg:px-20">
                             <div className="font-serif text-4xl lg:text-6xl md:py-3">Styling made easy</div>
@@ -113,7 +113,7 @@ export default function OurStory() {
                             </div>
                         </div>
                         <div className="hidden md:flex relative h-50 overflow-hidden p-4 ">
-                            <img src={aboutHeroImage} className="w-full object-top h-full object-cover rounded-xl" loading="lazy" alt="About Hero" aria-label="About Hero image" />
+                            <img src={aboutHeroImage} className="w-full object-top h-full object-cover rounded-xl" loading="lazy" alt="About Hero"/>
                         </div>
                     </div>
                 </section>

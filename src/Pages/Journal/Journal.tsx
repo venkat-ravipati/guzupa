@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Articles from "../../articles";
 import { ArrowLeft, ArrowRight, Dot, BookOpenText } from "lucide-react";
+import { motion } from "motion/react"
 
 interface Article {
     id: number;
@@ -19,30 +20,43 @@ export default function Journal() {
 
     const categories = ["All", "Style", "Materials", "Craft", "Culture", "Design"];
 
+    const cardVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } }
+    } as const;
+
     const filteredArticles = Articles.filter(
-        (Article) => activeCategory === "All" || Article.category === activeCategory
+        (article) => activeCategory === "All" || article.category === activeCategory
     );
 
-    const ArticlesGrid = filteredArticles.slice(0, visibleCount).map((Article) => {
+
+    const ArticlesGrid = filteredArticles.slice(0, visibleCount).map((article) => {
         return (
-            <div key={Article.id} className="cursor-pointer md:bg-cream p-3 md:p-0 bg-[#ece8e4] rounded-xl animate-in fade-in slide-in-from-bottom-4 duration-500" onClick={() => (setSelectedArticle(Article), window.scrollTo({ top: 0, left: 0, behavior: "smooth" }))}>
+            <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={cardVariants}
+                key={article.id} className="cursor-pointer md:bg-cream p-3 md:p-0 bg-[#ece8e4] rounded-xl" onClick={() => {setSelectedArticle(article); window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}}>
                 <div className="h-40">
-                    <img src={Article.img} className="w-full h-full object-cover " loading="lazy" alt={Article.title} aria-label={Article.title} />
+                    <img src={article.img} className="w-full h-full object-cover " loading="lazy" alt={article.title} />
                 </div>
                 <div>
                     <div className="flex font-sans pt-3 text-sm text-zinc-800 justify-between">
-                        <p className="font-bold">{Article.category}</p>
-                        <p>{Article.date}<span><Dot className="inline" />{Article.readTime}</span></p>
+                        <p className="font-bold">{article.category}</p>
+                        <p>{article.date}<span><Dot className="inline" />{article.readTime}</span></p>
                     </div>
-                    <div className="font-serif text-2xl py-2">{Article.title}</div>
+                    <div className="font-serif text-2xl py-2">{article.title}</div>
                     <div className="flex items-center">
-                        <p className="font-sans text-sm">{Article.excerpt}</p>
+                        <p className="font-sans text-sm">{article.excerpt}</p>
                         <ArrowRight size={25} />
                     </div>
                 </div>
-            </div>
+            </motion.div>
         )
     })
+
+    
 
     return (
         <>
@@ -86,10 +100,14 @@ export default function Journal() {
                 </div>
                 <div className={`absolute md:relative bg-cream md:pt-0 md:col-span-2 lg:col-span-1 ${selectedArticle ? " index-0 z-20 overflow-y-auto" : "hidden md:block"}`}>
                     {selectedArticle && (
-                        <div key={selectedArticle.id}>
+                        <motion.div
+                            initial="hidden"
+                            animate="visible"
+                            variants={cardVariants}
+                            key={selectedArticle.id}>
                             <div>
-                                <button onClick={() => setSelectedArticle(null)} className="hover:bg-stone-200 text-sm cursor-pointer px-4 py-5 md:px-8 md:py-3 md:m-3 rounded-3xl hover:px-6 transition-all duration-300"><ArrowLeft className="inline mr-2" size={20}/> Back to Journal </button>
-                                <div className="md:px-10 px-">
+                                <button onClick={() => setSelectedArticle(null)} className="hover:bg-hover text-sm cursor-pointer px-4 py-5 md:px-8 md:py-3 md:m-3 rounded-3xl hover:px-6 transition-all duration-300"><ArrowLeft className="inline mr-2" size={20} /> Back to Journal </button>
+                                <div className="md:px-10">
                                     <p className="font-sans font-bold text-zinc-800 p-5">{selectedArticle.category}</p>
                                     <div className="font-serif text-5xl lg:text-6xl p-4">{selectedArticle.title}</div>
                                     <p className="font-sans px-4">{selectedArticle.date}<span><Dot className="inline" />{selectedArticle.readTime}</span></p>
@@ -108,20 +126,20 @@ export default function Journal() {
                             <div className="border-t border-zinc-300 p-5">
                                 <div className="flex justify-between">
                                     <div className="font-serif text-2xl lg:text-3xl">You May Also Like</div>
-                                    <button className="font-sans cursor-pointer text-zinc-700 hover:text-black transition-all duration-300" onClick={() => (setSelectedArticle(null), window.scroll({ top: 0, left: 0, behavior: "smooth" }))}>View all</button>
+                                    <button className="font-sans cursor-pointer text-zinc-700 hover:text-black transition-all duration-300" onClick={() => {setSelectedArticle(null); window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}}>View all</button>
                                 </div>
                                 <div className="grid grid-cols-2 gap-4 p-2 lg:gap-7 ">
-                                    {Articles.slice(2, 4).map((Article) => {
+                                    {Articles.filter((article) => article.id !== selectedArticle.id).slice(0, 2).map((article) => {
                                         return (
-                                            <div key={Article.id} className="cursor-pointer" onClick={() => (setSelectedArticle(Article), window.scroll({ top: 0, left: 0, behavior: "smooth" }))}>
+                                            <div key={article.id} className="cursor-pointer" onClick={() => {setSelectedArticle(article); window.scrollTo({ top: 0, left: 0, behavior: "smooth" })}}>
                                                 <div className="h-40">
-                                                    <img src={Article.img} className="w-full h-full object-cover " loading="lazy" alt={Article.title} aria-label={Article.title} />
+                                                    <img src={article.img} className="w-full h-full object-cover " loading="lazy" alt={article.title} aria-label={article.title} />
                                                 </div>
                                                 <div>
-                                                    <div className="font-serif text-xl lg:text-2xl py-2 text-zinc-800">{Article.title}</div>
+                                                    <div className="font-serif text-xl lg:text-2xl py-2 text-zinc-800">{article.title}</div>
                                                     <div className="flex font-sans text-sm text-zinc-800 justify-between">
-                                                        <p className="text-zinc-800 font-bold">{Article.category}</p>
-                                                        <p>{Article.date}</p>
+                                                        <p className="text-zinc-800 font-bold">{article.category}</p>
+                                                        <p>{article.date}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,7 +147,7 @@ export default function Journal() {
                                     })}
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     )}
                     {!selectedArticle && (
                         <div className="h-full w-full flex flex-col justify-center items-center ">
