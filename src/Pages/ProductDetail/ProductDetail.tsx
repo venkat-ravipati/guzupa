@@ -18,6 +18,7 @@ export default function ProductDetail() {
     const [selectedSize, setSelectedSize] = useState(product?.sizes[0] ?? "");
     const [selectedWishlist, setSelectedWishlist] = useState(false)
     const [showShipping, setShowShipping] = useState(false);
+    const [justAdded, setJustAdded] = useState(false);
     const { addToCart } = useCart();
 
     useEffect(() => {
@@ -133,9 +134,9 @@ export default function ProductDetail() {
                                 className={`flex-1 py-4 text-sm tracking-widest uppercase transition ${product.stock === 0
                                     ? "bg-hover border border-gray-300 text-gray-500 cursor-not-allowed"
                                     : "bg-black text-white cursor-pointer hover:bg-zinc-800"
-                                    }`} onClick={() => addToCart(product.id, colorName, selectedSize)}
+                                    }`} onClick={() => {addToCart(product.id, colorName, selectedSize); setJustAdded(true); setTimeout(() => setJustAdded(false), 500)}}
                             >
-                                {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
+                                {product.stock === 0 ? "Out of Stock" : (justAdded ? "Added" : "Add to Cart")}
                             </button>
                             <button onClick={() => setSelectedWishlist(prev => !prev)} className={`w-14 border border-gray-300 flex items-center justify-center cursor-pointer  ${selectedWishlist ? "bg-black text-white" : "hover:bg-hover"}`}>
                                 <Heart size={20} />

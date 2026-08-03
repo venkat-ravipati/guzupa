@@ -74,7 +74,7 @@ export default function Navbar() {
                         <NavLink className={activeNavLink} to="/login">
                             <span className="hidden md:block">Account</span>
                         </NavLink>
-                        <NavLink to="/cart" className={activeNavLink}><img src={cart} className="inline" alt="cart" />{totalItems > 0 && <span className="inline items-center justify-center ">( {totalItems} )</span>}</NavLink>
+                        <NavLink to="/cart" className={`relative ${activeNavLink}`}><img src={cart} className="inline" alt="cart" />{totalItems > 0 && <span className="md:inline items-center justify-center md:absolute -right-5 font-bold top-0.5">({totalItems})</span>}</NavLink>
                     </div>
                 </div>
                 <AnimatePresence>

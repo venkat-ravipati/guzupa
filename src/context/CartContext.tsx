@@ -10,6 +10,9 @@ export type CartItem = {
 type CartContextType = {
     cartItems: CartItem[];
     addToCart: (productId: number, color: string, size: string) => void;
+    clearCart: () => void;
+    updateQuantity: (productId: number, color: string, size: string, quantity: number) => void;
+    removeFromCart: (productId: number, color: string, size: string) => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -35,8 +38,28 @@ export function CartProvider({ children }: { children: ReactNode }) {
         });
     }
 
+    function updateQuantity(productId: number, color: string, size: string, quantity: number) {
+        setCartItems((prev) =>
+            prev.map((item) =>
+                item.productId === productId && item.color === color && item.size === size
+                    ? { ...item, quantity }
+                    : item
+            )
+        );
+    }
+
+    function removeFromCart(productId: number, color: string, size: string) {
+        setCartItems((prev) =>
+            prev.filter((item) => !(item.productId === productId && item.color === color && item.size === size))
+        );
+    }
+
+    function clearCart(){
+        setCartItems([]);
+    }
+
     return (
-        <CartContext.Provider value={{ cartItems, addToCart }}>
+        <CartContext.Provider value={{ cartItems, addToCart, clearCart, updateQuantity, removeFromCart }}>
             {children}
         </CartContext.Provider>
     );
