@@ -7,13 +7,15 @@ import cart from "../../assets/images/Icons/cart.svg";
 import { menLinks, womenLinks, collectionsLinks } from "../../data/categories"
 import { motion, AnimatePresence } from "motion/react";
 import MobileMenu from "./MobileMenu";
+import { useCart } from "../../context/CartContext";
 
 export default function Navbar() {
     const [isShopHovered, setIsShopHovered] = useState(false);
     const [showMobileMenu, setshowMobileMenu] = useState(false);
     const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
     const navigate = useNavigate();
-
+    const { cartItems } = useCart();
+    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
     const openShop = () => {
         if (closeTimeout.current) clearTimeout(closeTimeout.current);
@@ -49,9 +51,9 @@ export default function Navbar() {
     return (
         <>
             <nav className="font-sans border-b border-gray-300  fixed top-0 left-0 right-0 bg-cream z-50">
-                <div className="flex items-center justify-between px-6 md:px-12 lg:px-20 py-4">
+                <div className="flex items-center justify-between px-5 md:px-12 lg:px-20 py-4">
                     <div className="md:hidden" onClick={() => setshowMobileMenu(prev => !prev)}><Menu /></div>
-                    <NavLink to="/" onClick={() => { window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }) }} className="text-sm font-semibold tracking-[0.3em] uppercase">Guzupa</NavLink>
+                    <NavLink to="/" onClick={() => { window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }) }} className="text-sm font-semibold tracking-[0.3em] ml-8 md:ml-0 uppercase">Guzupa</NavLink>
 
                     <div className="hidden md:flex items-center md:gap-5 lg:gap-8 text-sm text-gray-600">
                         <div onMouseEnter={openShop} onClick={() => { setIsShopHovered(false) }} onMouseLeave={closeShopWithDelay} className="relative">
@@ -62,7 +64,7 @@ export default function Navbar() {
                         <NavLink className={activeNavLink} to="/about">About</NavLink>
                     </div>
 
-                    <div className="flex items-center md:justify-between justify-end gap-2 md:gap-3 lg:gap-5 text-sm text-gray-600">
+                    <div className="flex items-center md:justify-between justify-end gap-1 md:gap-3 lg:gap-5 text-sm text-gray-600">
                         <NavLink to="/search" className={({ isActive }) =>`flex relative  items-center hover:text-black cursor-pointer ${isActive ? "text-black" : "text-gray-600"}`}>
                             <Search size={17} className="inline mr-1 cursor-pointer" aria-label="Search" />
                             <span className="hidden md:inline">Search</span>
@@ -72,7 +74,7 @@ export default function Navbar() {
                         <NavLink className={activeNavLink} to="/login">
                             <span className="hidden md:block">Account</span>
                         </NavLink>
-                        <NavLink to="/cart" className={activeNavLink}><img src={cart} className="inline" alt="cart" /></NavLink>
+                        <NavLink to="/cart" className={`relative ${activeNavLink}`}><img src={cart} className="inline" alt="cart" />{totalItems > 0 && <span className="md:inline items-center justify-center md:absolute -right-5 font-bold top-0.5">({totalItems})</span>}</NavLink>
                     </div>
                 </div>
                 <AnimatePresence>
@@ -138,7 +140,7 @@ export default function Navbar() {
                                 <div className="col-span-2">
                                     <div className="p-3">
                                         <div className="relative h-105 overflow-hidden rounded-2xl">
-                                            <img src={dropDownImg} className="w-full h-full object-cover object-left" alt="Explore Collections" aria-label="Explore Collections" />
+                                            <img src={dropDownImg} className="w-full h-full object-cover object-left" loading="eager" fetchPriority="high" alt="Explore Collections" aria-label="Explore Collections" />
                                             <div className="bg-black/20 h-full rounded-2xl w-full absolute top-0" />
                                         </div>
 

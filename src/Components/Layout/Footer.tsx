@@ -32,7 +32,7 @@ export default function Footer() {
         <>
             <footer>
                 <section>
-                    <div className="w-full h-80 flex flex-col items-center bg-black/96 border-b border-b-zinc-900 text-white">
+                    <div className="w-full flex flex-col items-center bg-black/96 border-b border-b-zinc-900 text-white">
                         <h1 className="font-serif mt-7 text-4xl md:text-5xl tracking-wider">Join the Guzupa</h1>
                         <p className="text-zinc-500 my-4  font-sans text-center">Be the first to discover new collections,<br />exclusive offers, and timeless inspiration.</p>
                         <form className="border-zinc-900 border my-3 sm:flex " action={() =>{}}>
@@ -49,7 +49,7 @@ export default function Footer() {
                 </section>
 
                 <section>
-                    <div className="w-full items-center bg-black/96 text-white">
+                    <div className="w-full items-center bg-black/96 md:px-4 text-white">
                         <div className="grid grid-cols-4 md:grid-cols-8 px-5 gap-8 py-4 md:py-5 border-b-zinc-900 text-white border-b">
                             <div className="col-span-3 md:col-span-2">
                                 <h3 className="font-serif text-zinc-100 text-3xl pb-1">Guzupa</h3>
@@ -82,13 +82,13 @@ export default function Footer() {
                 </section>
 
                 <section>
-                    <div className="w-full text-xs text-zinc-400 font-sans h-16 px-3 py-1 md:py-0 items-center md:flex bg-black/96 justify-between">
-                        <p className="hidden md:flex cursor-pointer hover:text-white">&copy; {new Date().getFullYear()} Guzupa. All rights reserved.</p>
+                    <div className="w-full text-xs text-zinc-400 font-sans h-16 px-6 md:px-5 py-1 md:py-0 items-center md:flex bg-black/96 justify-between">
+                        <p className="hidden md:flex cursor-pointer transition-all duration-300 hover:text-white">&copy; {new Date().getFullYear()} Guzupa. All rights reserved.</p>
                         <div className="flex justify-between py-1 cursor-pointer md:py-0">
-                            <a href="" className=" hover:text-white text-sm">code by Venkat</a>
+                            <a href="" className=" hover:text-white text-sm transition-all duration-300">code by Venkat</a>
                             <span className="md:hidden pr-5">&copy; {new Date().getFullYear()}</span>
                         </div>
-                        <p className="py-1 md:py-0 cursor-pointer"><span className="hover:text-white">Privacy Policy</span><span className="px-2 md:px-4 hover:text-white">Terms & Conditions</span></p>
+                        <p className="py-1 md:py-0 cursor-pointer"><span className="hover:text-white transition-all duration-300">Privacy Policy</span><span className="px-2 md:px-4 hover:text-white transition-all duration-300">Terms & Conditions</span></p>
                     </div>
                 </section>
             </footer>

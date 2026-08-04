@@ -19,7 +19,7 @@ export default function Login() {
     return (
         <div className="pt-13 grid grid-cols-2 h-screen w-full bg-white overflow-hidden">
             <div className="relative hidden md:block h-screen overflow-hidden">
-                <img src={loginImg} className="h-full w-full object-bottom-right object-cover" loading="lazy" alt="login page" />
+                <img src={loginImg} className="h-full w-full object-bottom-right object-cover" loading="eager" fetchPriority="high" alt="login page" />
                 <div className="absolute top-0 bottom-0 right-0 left-0 bg-black/20" />
                 <div className="text-white flex flex-col bottom-0 p-15 left-0 right-0 absolute top-0">
                     <p className="text-zinc-400 font-sans tracking-wider py-3 uppercase md:text-xs lg:text-sm">Member Access</p>
