@@ -5,18 +5,14 @@ import { useNavigate } from "react-router";
 import products from "../../products";
 import { useState } from "react";
 import ProductsCard from "../../Components/Product/ProductsCard";
+import { AnimatePresence, motion } from "motion/react";
+import { useWishlist } from "../../context/WishlistContext";
 
 export default function Cart() {
     const { cartItems, clearCart, updateQuantity, removeFromCart } = useCart();
+    const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
     const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0)
     const navigate = useNavigate();
-    const [wishlistedItems, setWishlistedItems] = useState<string[]>([]);
-
-    function toggleWishlistItem(key: string) {
-        setWishlistedItems((prev) =>
-            prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
-        );
-    }
 
     const subtotal = cartItems.reduce((sum, item) => {
         const product = products.find((p) => p.id === item.productId);
@@ -48,7 +44,7 @@ export default function Cart() {
 
     return (
         <div className="pt-13 bg-cream md:min-h-screen">
-            <p className="text-xs md:text-sm text-gray-600 px-6 lg:px-19 pt-10 lg:pt-14">
+            <p className="text-xs md:text-sm font-medium text-gray-800 px-6 md:ml-6 lg:px-19 pt-6 lg:pt-8">
                 <span className="mr-1">Shop</span> / <span className="px-1">Cart</span>
             </p>
 
@@ -89,59 +85,79 @@ export default function Cart() {
                                 >
                                     Remove all<Trash2 size={16} className="inline ml-2" /></button>
                             </div>
-                            {cartItems.map((item, index) => {
-                                const product = products.find((p) => p.id === item.productId);
+                            <AnimatePresence>
+                                {cartItems.map((item) => {
+                                    const product = products.find((p) => p.id === item.productId);
 
-                                if (!product) return null;
+                                    if (!product) return null;
 
-                                return (
-                                    <div key={`${item.productId}-${item.color}-${item.size}`} className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 overflow-hidden justify-start border-b border-gray-300 py-4">
-                                        <div className=" h-full w-full col-span-1 overflow-hidden">
-                                            <img src={product?.image} alt={product?.name} className="h-full object-cover object-top w-full rounded-md" />
-                                        </div>
-                                        <div className="lg:flex lg:justify-around xl:justify-normal col-span-1 lg:col-span-2 xl:col-span-3 md:ml-5 my-3 px-2 gap-5">
-                                            <div className="flex flex-col gap-2">
-                                                <p className="font-semibold text-xs md:text-base">{product?.name}</p>
-                                                <div className="lg:py-1">
-                                                    <p className="md:text-sm text-xs text-gray-500">{item.color} <span className="px-1">/</span> {item.size}</p>
+                                    return (
+                                        <motion.div 
+                                        layout
+                                        initial={{ opacity: 0, y: 40 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, x: -100 }}
+                                        transition={{type: "tween", duration: 0.3}}
+                                        key={`${item.productId}-${item.color}-${item.size}`} className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 overflow-hidden justify-start border-b border-gray-300 py-4">
+                                            <div className=" h-full w-full col-span-1 overflow-hidden">
+                                                <img src={product?.image} alt={product?.name} className="h-full object-cover object-top w-full rounded-md" />
+                                            </div>
+                                            <div className="lg:flex lg:justify-around xl:justify-normal col-span-1 lg:col-span-2 xl:col-span-3 md:ml-5 my-3 px-2 gap-5">
+                                                <div className="flex flex-col gap-2">
+                                                    <p className="font-semibold text-xs md:text-base">{product?.name}</p>
+                                                    <div className="lg:py-1">
+                                                        <p className="md:text-sm text-xs text-gray-500">{item.color} <span className="px-1">/</span> {item.size}</p>
+                                                    </div>
+                                                    <div className="text-sm md:text-base flex items-center lg:py-2">
+                                                        <IndianRupee size={15} />
+                                                        <p className="font-semibold"> {(product?.price).toLocaleString("en-IN")}</p>
+                                                    </div>
+                                                    <button className="text-sm hidden  text-gray-600 my-1 hover:text-black transition-all duration-300 cursor-pointer lg:flex items-center xl:gap-2" onClick={() => {
+                                                        if (isInWishlist(item.productId)) {
+                                                            removeFromWishlist(item.productId)
+                                                        } else {
+                                                            addToWishlist(item.productId)
+                                                        }
+                                                    }}>
+                                                        <span className={`inline p-1 transition-all duration-300 ${isInWishlist(item.productId) ? 'bg-black rounded-full text-white' : ''}`}><Heart size={16} /></span> Move to Wishlist
+                                                    </button> 
                                                 </div>
-                                                <div className="text-sm md:text-base flex items-center lg:py-2">
-                                                    <IndianRupee size={15} />
-                                                    <p className="font-semibold"> {(product?.price).toLocaleString("en-IN")}</p>
+                                                <div className="flexflex-col lg:ml-5 xl:ml-40 lg:gap-2">
+                                                    <p className="text-xs hidden lg:block text-gray-600">Quantity</p>
+                                                    <div className="border text-sm h-7 md:h-8 text-gray-500 gap-2 md:gap-5 my-2 md:my-3 border-gray-300 rounded-md flex items-center justify-center">
+                                                        <button className={`hover:text-black hover:bg-cream transition-all border-gray-300 px-2 duration-300 cursor-pointer ${item.quantity === 1 ? "opacity-30 cursor-not-allowed" : "cursor-pointer hover:text-black hover:bg-cream"}`}
+                                                            disabled={item.quantity === 1}
+                                                            onClick={() => updateQuantity(item.productId, item.color, item.size, item.quantity - 1)}><Minus size={16} /></button>
+                                                        <p>{item.quantity}</p>
+                                                        <button className="hover:text-black hover:bg-cream hover: transition-all duration-300 cursor-pointer border-gray-300 px-2" onClick={() => updateQuantity(item.productId, item.color, item.size, item.quantity + 1)}><Plus size={16} /></button>
+                                                    </div>
+                                                    <button className="text-xs md:text-sm text-gray-600 mt-3 hover:text-black transition-all duration-300 cursor-pointer flex items-center gap-2" onClick={() => removeFromCart(item.productId, item.color, item.size)}>
+                                                        <Trash2 size={16} /> Remove
+                                                    </button>
                                                 </div>
-                                                <button className="text-sm hidden  text-gray-600 my-1 hover:text-black transition-all duration-300 cursor-pointer lg:flex items-center xl:gap-2" onClick={() => toggleWishlistItem(`${item.productId}-${item.color}-${item.size}`)}>
-                                                    <span className={`inline p-1 transition-all duration-300 ${wishlistedItems.includes(`${item.productId}-${item.color}-${item.size}`) ? 'bg-black rounded-full text-white' : ''}`}><Heart size={16} /></span> Move to Wishlist
+                                            </div>
+                                            <div className="flex flex-col my-2 col-span-1  items-center justify-between py-3 lg:py-0">
+                                                <button
+                                                    className={`lg:hidden flex items-center justify-center transition-all duration-300 p-1 rounded-full ${isInWishlist(item.productId) ? 'bg-black text-white' : ''}`}
+                                                    onClick={() => {
+                                                        if (isInWishlist(item.productId)) {
+                                                            removeFromWishlist(item.productId)
+                                                        } else {
+                                                            addToWishlist(item.productId)
+                                                        }
+                                                    }}
+                                                >
+                                                    <Heart size={16} />
                                                 </button>
-                                            </div>
-                                            <div className="flexflex-col lg:ml-5 xl:ml-40 lg:gap-2">
-                                                <p className="text-xs hidden lg:block text-gray-600">Quantity</p>
-                                                <div className="border text-sm h-7 md:h-8 text-gray-500 gap-2 md:gap-5 my-2 md:my-3 border-gray-300 rounded-md flex items-center justify-center">
-                                                    <button className={`hover:text-black hover:bg-cream transition-all border-gray-300 px-2 duration-300 cursor-pointer ${item.quantity === 1 ? "opacity-30 cursor-not-allowed" : "cursor-pointer hover:text-black hover:bg-cream"}`}
-                                                        disabled={item.quantity === 1}
-                                                        onClick={() => updateQuantity(item.productId, item.color, item.size, item.quantity - 1)}><Minus size={16} /></button>
-                                                    <p>{item.quantity}</p>
-                                                    <button className="hover:text-black hover:bg-cream hover: transition-all duration-300 cursor-pointer border-gray-300 px-2" onClick={() => updateQuantity(item.productId, item.color, item.size, item.quantity + 1)}><Plus size={16} /></button>
+                                                <div className="text-sm md:text-base flex items-center py-10 lg:py-0 gap-1">
+                                                    <IndianRupee size={15} className="inline" />
+                                                    <p className="font-semibold text-sm md:text-base"> {(product?.price * item.quantity).toLocaleString("en-IN")}</p>
                                                 </div>
-                                                <button className="text-xs md:text-sm text-gray-600 mt-3 hover:text-black transition-all duration-300 cursor-pointer flex items-center gap-2" onClick={() => removeFromCart(item.productId, item.color, item.size)}>
-                                                    <Trash2 size={16} /> Remove
-                                                </button>
                                             </div>
-                                        </div>
-                                        <div className="flex flex-col my-2 col-span-1  items-center justify-between py-3 lg:py-0">
-                                            <button
-                                                className={`lg:hidden flex items-center justify-center transition-all duration-300 p-1 rounded-full ${wishlistedItems.includes(`${item.productId}-${item.color}-${item.size}`) ? 'bg-black text-white' : ''}`}
-                                                onClick={() => toggleWishlistItem(`${item.productId}-${item.color}-${item.size}`)}
-                                            >
-                                                <Heart size={16} />
-                                            </button>
-                                            <div className="text-sm md:text-base flex items-center py-10 lg:py-0 gap-1">
-                                                <IndianRupee size={15} className="inline" />
-                                                <p className="font-semibold text-sm md:text-base"> {(product?.price * item.quantity).toLocaleString("en-IN")}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
-                            })}
+                                        </motion.div>
+                                    )
+                                })}
+                            </AnimatePresence>
                         </div>
                         <div className="border mt-5 bg-cream border-gray-300 rounded-md md:col-span-2 p-5 xl:col-span-1">
                             <div className="md:text-sm text-xs font-sans md:pb-4 text-zinc-800 font-semibold flex items-center justify-between">

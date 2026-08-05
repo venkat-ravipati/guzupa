@@ -16,6 +16,7 @@ const MobileShopPage = lazy(() => import('./Pages/MobileMenu/MobileShopPage'))
 const MobileCategoryPage = lazy(() => import('./Pages/MobileMenu/MobileCategoryPage'))
 const ProductDetail = lazy(() => import('./Pages/ProductDetail/ProductDetail'))
 const Cart = lazy(() => import('./Pages/Cart/Cart'))
+const Wishlist = lazy(() => import('./Pages/Wishlist/Wishlist'))
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/products/:gender/:subCategory" element={<Products />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
           <Route path="*" element={<NotFound />} />
         </Route>
 

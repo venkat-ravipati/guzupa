@@ -8,15 +8,16 @@ import { allSizes } from "../../data/sizes";
 import ProductsCard from "../../Components/Product/ProductsCard";
 import { motion } from "motion/react";
 import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
 
 export default function ProductDetail() {
     const navigate = useNavigate()
     const { id } = useParams();
+    const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
     const [fullscreenImage, setFullscreenImage] = useState<number | null>(null);
     const product = products.find((p) => p.id === Number(id));
     const [colorName, setColorName] = useState(product?.colors[0] ?? "");
     const [selectedSize, setSelectedSize] = useState(product?.sizes[0] ?? "");
-    const [selectedWishlist, setSelectedWishlist] = useState(false)
     const [showShipping, setShowShipping] = useState(false);
     const [justAdded, setJustAdded] = useState(false);
     const { addToCart } = useCart();
@@ -26,6 +27,13 @@ export default function ProductDetail() {
             navigate("/products")
         }
     }, [product, navigate])
+
+    useEffect(() => {
+        if (product) {
+            setColorName(product.colors[0]);
+            setSelectedSize(product.sizes[0]);
+        }
+    }, [id]);
 
     if (!product) {
         return null;
@@ -112,7 +120,7 @@ export default function ProductDetail() {
                                             key={size}
                                             disabled={!isAvailable}
                                             onClick={() => isAvailable && setSelectedSize(size)}
-                                            className={`py-2 mr-2 rounded-sm border my-3 ${!isAvailable
+                                            className={`py-2 mr-2 transition-all duration-300 rounded-sm border my-3 ${!isAvailable
                                                 ? "text-zinc-300 border-gray-300 line-through cursor-not-allowed"
                                                 : size === selectedSize
                                                     ? "text-white bg-black cursor-pointer"
@@ -134,11 +142,17 @@ export default function ProductDetail() {
                                 className={`flex-1 py-4 text-sm tracking-widest uppercase transition ${product.stock === 0
                                     ? "bg-hover border border-gray-300 text-gray-500 cursor-not-allowed"
                                     : "bg-black text-white cursor-pointer hover:bg-zinc-800"
-                                    }`} onClick={() => {addToCart(product.id, colorName, selectedSize); setJustAdded(true); setTimeout(() => setJustAdded(false), 500)}}
+                                    }`} onClick={() => { addToCart(product.id, colorName, selectedSize); setJustAdded(true); setTimeout(() => setJustAdded(false), 500) }}
                             >
                                 {product.stock === 0 ? "Out of Stock" : (justAdded ? "Added" : "Add to Cart")}
                             </button>
-                            <button onClick={() => setSelectedWishlist(prev => !prev)} className={`w-14 border border-gray-300 flex items-center justify-center cursor-pointer  ${selectedWishlist ? "bg-black text-white" : "hover:bg-hover"}`}>
+                            <button onClick={() => {
+                                if (isInWishlist(product.id)) {
+                                    removeFromWishlist(product.id)
+                                } else {
+                                    addToWishlist(product.id)
+                                }
+                            }} className={`w-14 border transition-all duration-300 border-gray-300 flex items-center justify-center cursor-pointer  ${isInWishlist(product.id) ? "bg-black text-white hover:bg-zinc-800" : "hover:bg-hover"}`}>
                                 <Heart size={20} />
                             </button>
                         </div>
