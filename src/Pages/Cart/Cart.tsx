@@ -3,7 +3,6 @@ import emptyCartImg from "../../assets/images/CategorySection/emptyCartImg.webp"
 import { ArrowRight, Heart, IndianRupee, LockKeyholeIcon, Minus, Plus, RotateCcw, Trash2, Truck } from "lucide-react";
 import { useNavigate } from "react-router";
 import products from "../../products";
-import { useState } from "react";
 import ProductsCard from "../../Components/Product/ProductsCard";
 import { AnimatePresence, motion } from "motion/react";
 import { useWishlist } from "../../context/WishlistContext";
@@ -160,15 +159,15 @@ export default function Cart() {
                             </AnimatePresence>
                         </div>
                         <div className="border mt-5 bg-cream border-gray-300 rounded-md md:col-span-2 p-5 xl:col-span-1">
-                            <div className="md:text-sm text-xs font-sans md:pb-4 text-zinc-800 font-semibold flex items-center justify-between">
+                            <div className="text-sm font-sans pb-1 md:pb-4 text-zinc-800 font-semibold flex items-center justify-between">
                                 <div>Subtotal</div>
                                 <div className="flex items-center gap-1"><IndianRupee size={15} /> {subtotal.toLocaleString("en-IN")}</div>
                             </div>
-                            <div className="md:text-sm text-xs font-sans py-2 text-zinc-800 font-semibold flex items-center justify-between">
+                            <div className="text-sm font-sans py-2 text-zinc-800 font-semibold flex items-center justify-between">
                                 <div>Shipping</div>
                                 <div className="flex items-center gap-1">{shippingCost === 0 ? "Free" : <span className="flex items-center gap-1"><IndianRupee size={15} className="inline" /> {shippingCost} </span>}</div>
                             </div>
-                            <div className="font-serif md:font-sans mt-2 pt-2 border-gray-300 border-t md:pt-4  md:mt-3 text-zinc-800 font-medium text-xl md:font-semibold flex items-center justify-between">
+                            <div className="font-serif md:font-sans mt-2 pt-2 border-gray-300 border-t md:pt-4  md:mt-3 text-zinc-800 font-medium text-3xl md:text-xl md:font-semibold flex items-center justify-between">
                                 <div>Total</div>
                                 <div className="flex items-center gap-1"><IndianRupee size={15} /> {(subtotal + shippingCost).toLocaleString("en-IN")}
                                 </div>

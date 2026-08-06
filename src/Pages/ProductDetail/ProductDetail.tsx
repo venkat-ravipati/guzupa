@@ -88,7 +88,7 @@ export default function ProductDetail() {
                             {product.name}
                         </h1>
                         <div className="mt-4 text-xl font-medium flex items-baseline">
-                            {product.discount > 0 ? <div className="flex items-center"><IndianRupee className="mr-1" size={15} /><span>{getDiscountedPrice(product.price, product.discount)}</span><span className="line-through pl-2">{product.price}</span></div> : <div className="flex items-center"><IndianRupee className="mr-1" size={15} /><span>{product.price}</span></div>}
+                            {product.discount > 0 ? <div className="flex items-center"><IndianRupee className="mr-1" size={15} /><span>{getDiscountedPrice(product.price, product.discount).toLocaleString("en-IN")}</span><span className="line-through pl-2">{product.price.toLocaleString("en-IN")}</span></div> : <div className="flex items-center"><IndianRupee className="mr-1" size={15} /><span>{product.price.toLocaleString("en-IN")}</span></div>}
                             <div className="text-sm text-zinc-600 px-3">MRP incl. of all taxes</div>
                         </div>
                         <p className="mt-5 text-sm font-medium tracking-wide text-zinc-700">

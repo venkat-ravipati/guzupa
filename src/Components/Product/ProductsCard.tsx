@@ -41,7 +41,7 @@ export default function ProductsCard({ product }: ProductCardProps) {
             <div className="py-2 px-3">
                 <p className="font-sans font-bold text-sm">{product.name}</p>
                 <div className="text-zinc-500 font-medium text-sm py-1">
-                    {product.discount > 0 ? <div className="flex items-center"><IndianRupee className="mr-0.5" size={12} /><span>{discountedPrice}</span><span className="line-through pl-2">{product.price}</span></div> : <div className="flex items-center"><IndianRupee className="mr-0.5" size={12} /><span>{product.price}</span></div>}
+                    {product.discount > 0 ? <div className="flex items-center"><IndianRupee className="mr-0.5" size={12} /><span>{discountedPrice.toLocaleString("en-IN")}</span><span className="line-through pl-2">{product.price.toLocaleString("en-IN")}</span></div> : <div className="flex items-center"><IndianRupee className="mr-0.5" size={12} /><span>{product.price.toLocaleString("en-IN")}</span></div>}
                 </div>
                 <div className="flex py-1">
                     {product.colors.map((color) => (

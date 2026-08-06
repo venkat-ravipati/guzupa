@@ -5,7 +5,7 @@ import { Suspense } from "react";
 export default function MainLayout() {
     return (
         <>
-            <div className="flex flex-col min-h-screen">
+            <div className="flex flex-col bg-cream min-h-screen">
                 <Navbar />
                 <main className="flex-1">
                     <Suspense fallback={<div className="pt-13 flex justify-center">Loading…</div>}>
