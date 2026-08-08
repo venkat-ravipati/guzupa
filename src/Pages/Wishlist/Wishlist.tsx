@@ -18,12 +18,12 @@ export default function Wishlist() {
             <p className="text-xs md:text-sm text-gray-800 font-medium px-6 md:ml-6 lg:px-14 pt-6 lg:pt-7">
                 <span className="mr-1">Shop</span> / <span className="px-1">Wishlist</span>
             </p>
-            <div className="text-3xl md:text-5xl font-serif px-6 md:px-19 pt-3 md:pt-5">
+            <div className="text-3xl md:text-5xl font-serif px-6 md:px-13 lg:px-19 pt-3 md:pt-5">
                 Your wishlist {wishlistItems.length > 0 && `(${wishlistItems.length})`}
             </div>
 
             {wishlistItems.length === 0 ? (
-                <div className="px-6 md:px-19 pt-3">
+                <div className="px-6 md:px-13 lg:px-19 pt-3">
                     <div className="flex items-center justify-between">
                         <p className="text-sm md:text-base">
                             <span className="font-bold">Looks like your wishlist is empty.</span><br />
@@ -56,7 +56,7 @@ export default function Wishlist() {
                             transition={{type:"tween", duration:0.3, ease:"easeOut"}}
                             onClick={() => navigate(`/product/${product.id}`)} 
                             className="cursor-pointer">
-                                <div className="relative h-50 md:h-60 lg:h-70 xl:h-90 w-full overflow-hidden">
+                                <div className="relative h-50 md:h-60 lg:h-70 xl:h-90 w-full overflow-hidden rounded-t-xl">
                                     <img src={product.image} alt={product.name} className="absolute h-full w-full object-top object-cover" />
                                     <button
                                         onClick={(e) => { e.stopPropagation(); removeFromWishlist(product.id) }}

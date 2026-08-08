@@ -26,7 +26,7 @@ export default function NotFound() {
       <div className="grid md:flex justify-center items-center ">
         <Button onclick={() => {navigate("/")}} text="Back To Home" varient="primary" icon={ArrowRight}/>
         <span className="my-3 md:mx-3"/>
-        <Button onclick={() => {navigate("/collection")}} text="SHOP COLLECTION" varient="secondary" icon={ArrowRight}/>
+        <Button onclick={() => {navigate("/collections")}} text="SHOP COLLECTION" varient="secondary" icon={ArrowRight}/>
       </div>
 
       <div className="flex py-6 items-center max-w-sm mx-auto">

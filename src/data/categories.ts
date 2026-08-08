@@ -1,3 +1,10 @@
+import partyImg from "../assets/images/CategorySection/men_grid_CategorySection.webp";
+import bestSellersImg from "../assets/images/Journal/WinterLayers.webp";
+import backToCollege from "../assets/images/AboutPage/About-page-hero-img.webp";
+import newArrivalsImg from "../assets/images/AboutPage/about-story-clothing-rack.webp";
+import weekendEditImg from "../assets/images/Journal/ColorasLanguage.webp";
+import workWearImg from "../assets/images/Journal/TheSummerEdit.webp"
+
 export const menLinks = [
     { label: 'New Arrivals', href: '/products/men/new-arrivals', slug: 'new-arrivals' },
     { label: 'Shirts', href: '/products/men/shirts', slug: 'shirts' },
@@ -17,8 +24,10 @@ export const womenLinks = [
 ];
 
 export const collectionsLinks = [
-    { label: 'Spring / Summer', href: '/collections/spring-summer' },
-    { label: 'Monsoon', href: '/collections/monsoon' },
-    { label: 'Autumn / Winter', href: '/collections/autumn-winter' },
-    { label: 'Back to college', href: '/collections/back-to-college' }
+    { label: 'New Arrivals',img:newArrivalsImg, data:'Fresh pieces, newly curated for you.', href: '/products?category=New+Arrivals' },
+    { label: 'Best Sellers',img:bestSellersImg, data:'Our most-loved styles, chosen for you.', href: '/products?category=Bestsellers' },
+    { label: 'Party & Occasion',img:partyImg, data:'Elevated looks for every celebration.', href: '/products' },
+    { label: 'Workwear',img:workWearImg, data:'Refined pieces for every working day.', href: '/products' },
+    { label: 'Back to college',img:backToCollege, data:'Easy essentials for the new semester.', href: '/products' },
+    { label: 'Weekend Edit',img:weekendEditImg, data:'Relaxed styles for your days off.', href: '/products' }
 ];

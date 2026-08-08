@@ -8,9 +8,7 @@ export default function MainLayout() {
             <div className="flex flex-col bg-cream min-h-screen">
                 <Navbar />
                 <main className="flex-1">
-                    <Suspense fallback={<div className="pt-13 flex justify-center">Loading…</div>}>
-                        <Outlet />
-                    </Suspense>
+                    <Outlet />
                 </main>
                 <Footer />
             </div>

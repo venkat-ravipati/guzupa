@@ -94,7 +94,7 @@ export default function Home() {
           <h1 className="font-serif text-7xl md:text-9xl">Timeless<br />Essentials</h1>
           <p className="font-sans text-m  md:hidden flex mt-6 mb-9">{getCurrentCollection()}</p>
           <p className="font-sans hidden md:flex text-s md:mt-3 md:mb-15">Elevated designs. Premium materials.<br />Made to last.</p>
-          <Button onclick={() => { navigate("/collection") }} text="SHOP COLLECTION" varient="primary" />
+          <Button onclick={() => { navigate("/collections") }} text="SHOP COLLECTION" varient="primary" />
         </div>
       </div>
 
