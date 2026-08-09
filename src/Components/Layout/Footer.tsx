@@ -1,29 +1,30 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router"
+
 export default function Footer() {
 
     const footerLinks = [
         {
             title: "SHOP",
             links: [
-                { label: "All Products", to: "/products" },
-                { label: "New Arrivals", to: "/products?category=New+Arrivals" },
-                { label: "Best Sellers", to: "/products?category=Bestsellers"},
+                { label: "Shop All", to: "/products" },
+                { label: "Men", to: "/products/men" },
+                { label: "Women", to: "/products/women"},
             ],
         },
         {
             title: "COLLECTIONS",
             links: [
-                { label: "Men", to: "/collections/men" },
-                { label: "Women", to: "/collections/women" },
-                { label: "Lookbook", to: "/collections/lookbook" },
+                { label: "Collections", to: "/collections" },
+                { label: "New Arrivals", to: "/products?category=New+Arrivals" },
+                { label: "Best Sellers", to: "/products?category=Bestsellers"},
             ],
         },
         {
             title: "ABOUT",
             links: [
-                { label: "Our Story", to: "/about" },
-                { label: "Careers", to: "/about/careers" },
+                { label: "Our Story", to: "/about/our-story" },
+                { label: "Contact Us", to: "/contact" },
             ],
         },
     ];
@@ -67,8 +68,8 @@ export default function Footer() {
                                             <ul>
                                                 {section.links.map((link) => {
                                                     return (
-                                                        <li key={link.to} className="font-sans font-light text-sm text-zinc-500 hover:text-white transition-all duration-500">
-                                                            <Link to={link.to}>{link.label}</Link>
+                                                        <li key={link.to} className="font-sans font-light text-sm text-zinc-500">
+                                                            <Link to={link.to} className="hover:text-white transition-all duration-500">{link.label}</Link>
                                                         </li>
                                                     )
                                                 })}
@@ -85,7 +86,7 @@ export default function Footer() {
                     <div className="w-full text-xs text-zinc-400 font-sans h-16 px-6 md:px-5 py-1 md:py-0 items-center md:flex bg-black/96 justify-between">
                         <p className="hidden md:flex cursor-pointer transition-all duration-300 hover:text-white">&copy; {new Date().getFullYear()} Guzupa. All rights reserved.</p>
                         <div className="flex justify-between py-1 cursor-pointer md:py-0">
-                            <a href="" className=" hover:text-white text-sm transition-all duration-300">code by Venkat</a>
+                            <a href="https://linkedin.com/in/venkat-ravipati" target="_blank" className=" hover:text-white text-sm transition-all duration-300">code by Venkat</a>
                             <span className="md:hidden pr-5">&copy; {new Date().getFullYear()}</span>
                         </div>
                         <p className="py-1 md:py-0 cursor-pointer"><span className="hover:text-white transition-all duration-300">Privacy Policy</span><span className="px-2 md:px-4 hover:text-white transition-all duration-300">Terms & Conditions</span></p>
