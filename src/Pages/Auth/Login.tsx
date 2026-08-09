@@ -2,19 +2,32 @@ import loginImg from "../../assets/images/Auth/Login.webp"
 import { useState } from "react";
 import { motion } from "motion/react";
 import { useNavigate, Link } from "react-router";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Login() {
     const navigate = useNavigate()
-
+    const { isLoggedIn, login } = useAuth();
     const [active, setActive] = useState("SIGN IN");
 
     const tabs = ["SIGN IN", "CREATE ACCOUNT"];
 
-    function handleSignIn(formData: any){
-        const email = formData.get("email")
-        const password = formData.get("password")
-        console.log(email,password)
+    function handleSignIn(formData: FormData) {
+        const email = formData.get("email") as string;
+        const password = formData.get("password")as string;
+        login(email, password);
+        navigate("/account");
     }
+
+    function handleSignUp(formData: FormData) {
+        const firstname = formData.get("firstname");
+        const lastname = formData.get("lastname");
+        const email = formData.get("email") as string;
+        const password = formData.get("password") as string;
+        login(email, password);
+        navigate("/account")
+    }
+
+
 
     return (
         <div className="pt-13 grid grid-cols-2 h-screen w-full bg-white overflow-hidden">
@@ -57,7 +70,7 @@ export default function Login() {
                         <p className="font-sans text-sm md:text-sm tracking-wider py-2 md:py-3 text-zinc-500">Sign in to track orders, manage your wishlist, and check out faster.</p>
                         <form action={handleSignIn}>
                             <label htmlFor="email" className="text-xs tracking-widest text-zinc-500 font-medium block py-2 mt-2 md:mt-4">EMAIL ADDRESS</label>
-                            <input type="email" id="email" required placeholder="azien@gmail.com" autoComplete="email" name="email" className="py-3.25 px-3.5 border-gray-300 text-sm border text-black bg-cream block w-full" />
+                            <input type="email" id="email" required placeholder="your@email.com" autoComplete="email" name="email" className="py-3.25 px-3.5 border-gray-300 text-sm border text-black bg-cream block w-full" />
                             <label htmlFor="password" className="text-xs tracking-widest text-zinc-500 font-medium block py-2 mt-2">PASSWORD</label>
                             <input type="password" id="password" required placeholder="••••••••" name="password" autoComplete="current-password" className="py-3.25 px-3.5 border-gray-300 text-sm border text-black bg-cream block w-full" />
                             <div className="flex justify-end py-2">
@@ -83,7 +96,7 @@ export default function Login() {
                     <div className="md:pt-8 pt-4 pr-5">
                         <div className="font-serif text-3xl md:text-4xl">Join Guzupa</div>
                         <p className="font-sans text-sm md:text-sm tracking-wider py-2 md:py-3 text-zinc-500">Create an account for faster checkout and early access to new arrivals.</p>
-                        <form action={() => { console.log("form submited") }}>
+                        <form action={handleSignUp}>
                             <div className="grid grid-cols-2 gap-5">
                                 <div>
                                     <label htmlFor="firstname" className="text-xs tracking-widest text-zinc-500 font-medium block py-2 mt-2 md:mt-4">FIRST NAME</label>

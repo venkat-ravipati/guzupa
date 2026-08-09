@@ -1,6 +1,7 @@
 import { X, Search, User, Heart, ShoppingCart, ChevronRight } from "lucide-react"
 import { motion } from "motion/react"
 import { Link } from "react-router";
+import { getCurrentCollection } from "../../utils/getCurrentCollection";
 
 type Props = { setShowMobileMenu: React.Dispatch<React.SetStateAction<boolean>>; }
 
@@ -12,21 +13,7 @@ export default function MobileMenu({ setShowMobileMenu }: Props) {
         { label: "JOURNAL", to: "/journal" },
         { label: "ABOUT", to: "/about" },
     ];
-
-    const getCurrentCollection = () => {
-        const month = new Date().getMonth() + 1;
-        const year = new Date().getFullYear();
-
-        if (month >= 2 && month <= 6) {
-            return `Spring / Summer ${year}`;
-        }
-
-        if (month >= 7 && month <= 9) {
-            return `Monsoon ${year}`;
-        }
-
-        return `Autumn / Winter ${year}`;
-    };
+    
     return (
         <motion.div
             key="mobile-menu"

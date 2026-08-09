@@ -100,8 +100,8 @@ export default function Wishlist() {
                                         ) : null}
                                     </div>
                                     <div className="pt-2 px-1 mb-5">
-                                        <p className="font-sans font-bold text-sm">{product.name}</p>
-                                        {product.discount > 0 ? <div className="flex items-center text-sm font-medium"><IndianRupee className="mr-1" size={15} /><span>{getDiscountedPrice(product.price, product.discount).toLocaleString("en-IN")}</span><span className="line-through pl-2">{product.price.toLocaleString("en-IN")}</span></div> : <div className="flex items-center"><IndianRupee className="mr-1" size={15} /><span>{product.price.toLocaleString("en-IN")}</span></div>}
+                                        <p className="font-sans font-medium text-xs md:font-bold md:text-sm">{product.name}</p>
+                                        {product.discount > 0 ? <div className="flex pt-1 items-center text-xs md:text-sm font-medium"><IndianRupee className="mr-1" size={15} /><span>{getDiscountedPrice(product.price, product.discount).toLocaleString("en-IN")}</span><span className="line-through pl-2">{product.price.toLocaleString("en-IN")}</span></div> : <div className="flex items-center"><IndianRupee className="mr-1" size={15} /><span>{product.price.toLocaleString("en-IN")}</span></div>}
                                     </div>
                                 </div>
                             ))}

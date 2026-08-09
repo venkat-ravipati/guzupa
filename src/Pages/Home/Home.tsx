@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import productsData from "../../products";
 import { ArrowRight, Heart, IndianRupee } from "lucide-react";
 import { useWishlist } from "../../context/WishlistContext";
+import { getCurrentCollection } from "../../utils/getCurrentCollection";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -16,22 +17,6 @@ export default function Home() {
     { name: "Men", image: menCategorySection, path: "/products/men" },
     { name: "Accessories", image: accessoriesCategorySection, path: "/products/accessories" },
   ];
-
-
-  const getCurrentCollection = () => {
-    const month = new Date().getMonth() + 1;
-    const year = new Date().getFullYear();
-
-    if (month >= 2 && month <= 6) {
-      return `Spring / Summer ${year}`;
-    }
-
-    if (month >= 7 && month <= 9) {
-      return `Monsoon ${year}`;
-    }
-
-    return `Autumn / Winter ${year}`;
-  };
 
   const newArrivals = () => {
     return productsData
