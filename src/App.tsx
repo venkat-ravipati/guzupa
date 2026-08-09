@@ -4,6 +4,8 @@ import NotFound from './Pages/NotFound'
 import MainLayout from './Layouts/MainLayout'
 import ScrollToTop from './Layouts/ScrollToTop'
 import { lazy } from 'react'
+import MobileShopPage from './Pages/MobileMenu/MobileShopPage'
+import MobileCategoryPage from './Pages/MobileMenu/MobileCategoryPage'
 
 const About = lazy(() => import('./Pages/About/About'));
 const AdminLayout = lazy(() => import('./Layouts/AdminLayout'))
@@ -12,8 +14,6 @@ const Journal = lazy(() => import('./Pages/Journal/Journal'))
 const Products = lazy(() => import('./Pages/Products/Products'))
 const AuthLayout = lazy(() => import('./Layouts/AuthLayout'))
 const Login = lazy(() => import('./Pages/Auth/Login'))
-const MobileShopPage = lazy(() => import('./Pages/MobileMenu/MobileShopPage'))
-const MobileCategoryPage = lazy(() => import('./Pages/MobileMenu/MobileCategoryPage'))
 const ProductDetail = lazy(() => import('./Pages/ProductDetail/ProductDetail'))
 const Cart = lazy(() => import('./Pages/Cart/Cart'))
 const Wishlist = lazy(() => import('./Pages/Wishlist/Wishlist'))
