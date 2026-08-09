@@ -71,10 +71,10 @@ export default function Navbar() {
                             <div className="absolute -top-1 hover:border border-gray-300 rounded-2xl -left-1 -right-1 -bottom-1 inset-0 z-10 hidden md:block" />
                         </NavLink>
                         <NavLink to="/wishlist" className={({ isActive }) => `hidden md:flex hover:text-black ${isActive ? "text-black" : "text-gray-600"}`}>Wishlist</NavLink>
-                        <NavLink className={activeNavLink} to="/login">
+                        <NavLink className={activeNavLink} to="/account">
                             <span className="hidden md:block">Account</span>
                         </NavLink>
-                        <NavLink to="/cart" className={`relative ${activeNavLink}`}><img src={cart} className="inline" alt="cart" />{totalItems > 0 && <span className="md:inline items-center justify-center md:absolute -right-5 font-bold top-0.5">({totalItems})</span>}</NavLink>
+                        <NavLink to="/cart" className={`relative ${activeNavLink}`}><img src={cart} className="inline" alt="cart" />{totalItems > 0 && <span className="md:inline items-center justify-center md:absolute -right-5.5 font-bold top-0.5">({totalItems})</span>}</NavLink>
                     </div>
                 </div>
                 <AnimatePresence>

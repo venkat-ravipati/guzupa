@@ -16,6 +16,10 @@ const MobileShopPage = lazy(() => import('./Pages/MobileMenu/MobileShopPage'))
 const MobileCategoryPage = lazy(() => import('./Pages/MobileMenu/MobileCategoryPage'))
 const ProductDetail = lazy(() => import('./Pages/ProductDetail/ProductDetail'))
 const Cart = lazy(() => import('./Pages/Cart/Cart'))
+const Wishlist = lazy(() => import('./Pages/Wishlist/Wishlist'))
+const Collections = lazy(() => import('./Pages/Collections/Collections'))
+const Search = lazy(() => import('./Pages/Search/Search'))
+const Account = lazy(() => import('./Pages/Account/Account'))
 
 function App() {
   return (
@@ -23,19 +27,24 @@ function App() {
       <ScrollToTop />
 
       <Routes>
-
+        
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/menu/shop" element={<MobileShopPage />} />
           <Route path="/menu/:slug" element={<MobileCategoryPage />} />
+          <Route path="/collections" element={<Collections />} />
           <Route path="/journal" element={<Journal />} />
           <Route path="/about" element={<About />} />
           <Route path="/about/our-story" element={<OurStory />} />
+          <Route path="/search" element={<Search />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:gender" element={<Products />} />
           <Route path="/products/:gender/:subCategory" element={<Products />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/account" element={<Account />}/>
+          
           <Route path="*" element={<NotFound />} />
         </Route>
 

@@ -6,28 +6,17 @@ import Button from "../../Components/Common/Button";
 import { useNavigate } from "react-router";
 import productsData from "../../products";
 import { ArrowRight, Heart, IndianRupee } from "lucide-react";
+import { useWishlist } from "../../context/WishlistContext";
+import { getCurrentCollection } from "../../utils/getCurrentCollection";
+
 export default function Home() {
   const navigate = useNavigate();
+  const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist();
   const categories = [
     { name: "Women", image: womenCategorySection, path: "/products/women" },
     { name: "Men", image: menCategorySection, path: "/products/men" },
     { name: "Accessories", image: accessoriesCategorySection, path: "/products/accessories" },
   ];
-
-  const getCurrentCollection = () => {
-    const month = new Date().getMonth() + 1;
-    const year = new Date().getFullYear();
-
-    if (month >= 2 && month <= 6) {
-      return `Spring / Summer ${year}`;
-    }
-
-    if (month >= 7 && month <= 9) {
-      return `Monsoon ${year}`;
-    }
-
-    return `Autumn / Winter ${year}`;
-  };
 
   const newArrivals = () => {
     return productsData
@@ -47,15 +36,25 @@ export default function Home() {
               loading="lazy"
               className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
             />
+            <span className="absolute top-3 left-3 bg-white text-black text-[10px] font-bold border border-gray-300 px-2 py-1 rounded uppercase tracking-wide">
+              New
+            </span>
             <button
-              onClick={() => { }}
-              className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/70 backdrop-blur flex items-center justify-center hover:bg-white transition"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (isInWishlist(product.id)) {
+                  removeFromWishlist(product.id)
+                } else {
+                  addToWishlist(product.id)
+                }
+              }}
+              className={`absolute top-3 cursor-pointer right-3 w-8 h-8 rounded-full  backdrop-blur flex items-center justify-center transition-all duration-300 ${isInWishlist(product.id) ? "bg-black text-white" : "bg-white/70"}`}
             >
               <Heart size={16} />
             </button>
           </div>
-          <div className="mt-4">
-            <p className="text-[10px] tracking-[0.15em] text-gray-500 uppercase mb-1">
+          <div className="mt-4 px-2">
+            <p className="text-xs tracking-wider text-gray-500 uppercase mb-1">
               {product.subCategory} · {product.colors[0]}
             </p>
             <h3 className="font-medium text-sm">{product.name}</h3>
@@ -69,7 +68,7 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className="bg-cream">
       <div className="relative h-full flex justify-center items-center pt-13">
         <div className="relative w-full h-full">
           <img src={heroImage} loading="eager" fetchPriority="high" className="object-cover min-h-screen w-full flex" alt="home page image" />
@@ -80,7 +79,7 @@ export default function Home() {
           <h1 className="font-serif text-7xl md:text-9xl">Timeless<br />Essentials</h1>
           <p className="font-sans text-m  md:hidden flex mt-6 mb-9">{getCurrentCollection()}</p>
           <p className="font-sans hidden md:flex text-s md:mt-3 md:mb-15">Elevated designs. Premium materials.<br />Made to last.</p>
-          <Button onclick={() => { navigate("/collection") }} text="SHOP COLLECTION" varient="primary" />
+          <Button onclick={() => { navigate("/collections") }} text="SHOP COLLECTION" varient="primary" />
         </div>
       </div>
 
