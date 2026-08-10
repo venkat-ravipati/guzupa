@@ -2,9 +2,10 @@ import aboutHeroImage from "../../assets/images/AboutPage/About-page-hero-img.we
 import storyClothingRack from "../../assets/images/AboutPage/about-story-clothing-rack.webp"
 import approachKnitwear from "../../assets/images/AboutPage/about-approach-knitwear.webp"
 import storeShowroom from "../../assets/images/AboutPage/about-store-showroom.webp"
-import { Phone, Clock, MapPin, Shirt, ArrowRight, ShieldCheck, Check, Sparkles, Globe } from "lucide-react"
+import { Shirt, ArrowRight, ShieldCheck, Check, Sparkles, Globe } from "lucide-react"
 import Button from "../../Components/Common/Button"
 import { useNavigate } from "react-router"
+import { info } from "../../data/info";
 
 export default function About() {
 
@@ -58,28 +59,6 @@ export default function About() {
             title: "It Lasts",
             description: "Timeless pieces, quality materials, designed to be worn for years."
         }
-    ];
-
-    const Info = [
-        {
-            icon: MapPin,
-            title: "Address",
-            lines: ["Chinnagenahalli Main Road", "Avalahalli, KA 560049", "India"],
-        },
-        {
-            icon: Clock,
-            title: "Opening hours",
-            lines: [
-                "Monday - Friday: 10:00 AM - 7:00 PM",
-                "Saturday: 11:00 AM - 7:00 PM",
-                "Sunday: 12:00 PM - 6:00 PM",
-            ],
-        },
-        {
-            icon: Phone,
-            title: "Contact",
-            lines: ["+91 63619 00502", "store@guzupa.com"],
-        },
     ];
 
     return (
@@ -203,8 +182,8 @@ export default function About() {
                         <div className="border-b-2 max-w-5/6 border-zinc-300 m-auto" />
                         <div className="p-6 lg:px-10">
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 justify-center">
-                                {Info.map(({ icon: Icon, title, lines }, index) => {
-                                    const isLast = index === Info.length - 1;
+                                {info.map(({ icon: Icon, title, lines }, index) => {
+                                    const isLast = index === info.length - 1;
                                     return (
                                         <div key={index} className={`flex gap-2 md:justify-center border-zinc-300 ${!isLast ? "border-b md:border-b-0 md:border-r pb-3 md:pb-0" : ""}`}>
                                             <div className="py-3"><Icon size={20} /></div>

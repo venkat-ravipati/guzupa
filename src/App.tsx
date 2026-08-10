@@ -20,6 +20,7 @@ const Wishlist = lazy(() => import('./Pages/Wishlist/Wishlist'))
 const Collections = lazy(() => import('./Pages/Collections/Collections'))
 const Search = lazy(() => import('./Pages/Search/Search'))
 const Account = lazy(() => import('./Pages/Account/Account'))
+const Contact = lazy(() => import('./Pages/Contact/Contact'))
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/account" element={<Account />}/>
+          <Route path="/contact" element={<Contact />} />
           
           <Route path="*" element={<NotFound />} />
         </Route>
