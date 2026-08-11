@@ -81,18 +81,18 @@ export default function Navbar() {
                     {isShopHovered && (
                         <motion.div className="absolute top-full pt-2 left-0 right-0 w-full transition-all duration-300 ease-in-out origin-top bg-cream border border-gray-300 shadow-lg rounded-b-xl"
                             onClick={() => { setIsShopHovered(false) }}
-                            initial={{opacity:0 , pointerEvents: "none" }}
-                            animate={{opacity:1 , pointerEvents: "auto" }}
+                            initial={{opacity:0 , pointerEvents: "none"}}
+                            animate={{opacity:1 , pointerEvents: "auto"}}
                             exit={{opacity:0 , pointerEvents: "none"}}
                             transition={{ type : "tween" , duration: 0.3 , ease:"backOut"}}
                             onMouseEnter={openShop}
                             onMouseLeave={closeShopWithDelay}>
-                            <div className="grid grid-cols-5 gap-5 ">
+                            <div className="grid grid-cols-5 gap-5">
                                 <div className="col-span-3">
-                                    <div className="pb-4">
+                                    <div>
                                         <p className="font-bold text-xs p-3 tracking-wider xl:px-6">SHOP</p>
                                         <div className="font-serif text-4xl px-3 xl:px-6">Timeless styles,<br />thoughtfully curated.</div>
-                                        <div className="grid grid-cols-3 gap-2 lg:gap-5 mt-4 text-sm h-full border-t border-gray-300 pt-4 m-1 lg:m-3">
+                                        <div className="grid grid-cols-3 gap-2 lg:gap-5 mt-4 text-sm h-full border-t border-gray-300 pt-2 m-1 lg:m-3">
                                             <div className="flex flex-col h-full lg:px-4 xl:px-6">
                                                 <p className="font-bold text-xs py-1">MEN</p>
                                                 <ul>
@@ -105,7 +105,7 @@ export default function Navbar() {
                                                     ))}
                                                 </ul>
 
-                                                <NavLink to="/products/men" className="mt-auto font-bold  transition-all duration-300 text-xs pt-6 hover:px-2">View All Men<ArrowRight className="inline ml-1" size={16} /></NavLink>
+                                                <NavLink to="/products/men" className="mt-auto font-bold  transition-all duration-300 text-xs pt-3 hover:px-2">View All Men<ArrowRight className="inline ml-1" size={16} /></NavLink>
                                             </div>
                                             <div className="flex flex-col h-full border-l border-gray-200 pl-3 lg:pl-8">
                                                 <p className="font-bold text-xs py-1">WOMEN</p>
@@ -119,7 +119,7 @@ export default function Navbar() {
                                                     ))}
                                                 </ul>
 
-                                                <NavLink to="/products/women" className="mt-auto  hover:px-1 transition-all duration-300  font-bold text-xs py-2">View All Women<ArrowRight className="inline ml-1" size={16} /></NavLink>
+                                                <NavLink to="/products/women" className="mt-auto  hover:px-1 transition-all duration-300 py-1 font-bold text-xs">View All Women<ArrowRight className="inline ml-1" size={16} /></NavLink>
                                             </div>
                                             <div className="flex flex-col h-full border-l border-gray-200 pl-3 lg:pl-5 xl:pl-9">
                                                 <p className="font-bold text-xs py-1">COLLECTIONS</p>
@@ -152,12 +152,12 @@ export default function Navbar() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-4 p-5">
+                            <div className="grid grid-cols-4 px-5">
                                 {keyPoints.map((points, index) => {
                                     const islast = index == keyPoints.length - 1;
                                     return (
-                                        <div key={index} className="py-5 border-gray-300 border-t">
-                                            <div className={`flex items-center justify-center pl-3 ${!islast ? "border-r  border-gray-300" : ""}`}>
+                                        <div key={index} className="py-4.5 border-gray-300 border-t">
+                                            <div className={`flex text-zinc-600 items-center justify-center pl-3 ${!islast ? "border-r  border-gray-300" : ""}`}>
                                                 <div>
                                                     <points.icon size={20} />
                                                 </div>
