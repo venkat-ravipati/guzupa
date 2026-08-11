@@ -89,7 +89,7 @@ export default function Navbar() {
                             onMouseLeave={closeShopWithDelay}>
                             <div className="grid grid-cols-5 gap-5 ">
                                 <div className="col-span-3">
-                                    <div>
+                                    <div className="pb-4">
                                         <p className="font-bold text-xs p-3 tracking-wider xl:px-6">SHOP</p>
                                         <div className="font-serif text-4xl px-3 xl:px-6">Timeless styles,<br />thoughtfully curated.</div>
                                         <div className="grid grid-cols-3 gap-2 lg:gap-5 mt-4 text-sm h-full border-t border-gray-300 pt-4 m-1 lg:m-3">
