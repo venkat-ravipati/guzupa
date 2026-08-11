@@ -70,7 +70,7 @@ export default function Home() {
   return (
     <div className="bg-cream">
       <div className="relative h-full flex justify-center items-center pt-13">
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full bg-stone-300">
           <img src={heroImage} loading="eager" fetchPriority="high" className="object-cover min-h-screen w-full flex" alt="home page image" />
           <div className="absolute inset-0 bg-black/40" />
         </div>
