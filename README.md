@@ -1,16 +1,36 @@
-# React + Vite
+# Guzupa: Timeless Fashion & Essentials
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A boutique fashion e-commerce storefront for the Indian market, built with React and TypeScript.
 
-Currently, two official plugins are available:
+**Live demo:** https://guzupa.venkatravipati.in/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+> **Status:** The frontend is complete. The backend (Spring Boot + database) is in progress, so the app currently runs on dummy product data with simulated authentication.
 
-## React Compiler
+## Screenshots
+<img width="1068" height="609" alt="image" src="https://github.com/user-attachments/assets/78ee2697-6ee5-40cc-a68e-54b051a63ccd" />
+<img width="1068" height="615" alt="image" src="https://github.com/user-attachments/assets/dfa67879-1249-433b-b4b6-71c014d5daba" />
+<img width="1067" height="615" alt="image" src="https://github.com/user-attachments/assets/2439893a-07c8-45e6-bd44-1f2adbf76b54" />
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+## Features
+- Pages: Home, Products, Collections, Search, Product Detail, Cart, Wishlist, Account, Journal, About, Our Story, Contact
+- Category filter navigation with a smooth sliding-underline animation
+- Full-width hover dropdown in the navbar
+- Entrance animations on the product page using Motion
+- Cart, wishlist and auth state managed with React Context
+- Editorial design: serif headings and a cream colour palette
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+- React 19 + TypeScript
+- React Router v7
+- Tailwind CSS
+- Motion (framer-motion)
+- lucide-react icons
+- Deployed on Vercel
+
+## Roadmap
+- [ ] Backend REST API with Spring Boot and a database
+- [ ] Real authentication (currently simulated)
+- [ ] Checkout flow
+- [ ] Product care and composition data
+- [ ] Trending searches
