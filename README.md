@@ -22,11 +22,34 @@ A boutique fashion e-commerce storefront for the Indian market, built with React
 
 ## Tech Stack
 - React 19 + TypeScript
-- React Router v7
-- Tailwind CSS
+- React Router 8
+- Tailwind CSS 4
+- Vite
 - Motion (framer-motion)
+- Radix UI (slider)
 - lucide-react icons
 - Deployed on Vercel
+
+## Getting Started
+
+### Prerequisites
+- Node.js 20.19 or later
+- npm
+
+### Run locally
+```bash
+git clone https://github.com/venkat-ravipati/guzupa.git
+cd guzupa
+npm install
+npm run dev
+```
+
+Open the address printed in your terminal (usually http://localhost:5173).
+
+### Other commands
+- `npm run build` creates a production build
+- `npm run preview` previews the production build locally
+- `npm run lint` runs ESLint
 
 ## Roadmap
 - [ ] Backend REST API with Spring Boot and a database
