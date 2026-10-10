@@ -7,9 +7,9 @@ A boutique fashion e-commerce storefront for the Indian market, built with React
 > **Status:** The frontend is complete. The backend (Spring Boot + database) is in progress, so the app currently runs on dummy product data with simulated authentication.
 
 ## Screenshots
-<img width="1068" height="609" alt="image" src="https://github.com/user-attachments/assets/78ee2697-6ee5-40cc-a68e-54b051a63ccd" />
-<img width="1068" height="615" alt="image" src="https://github.com/user-attachments/assets/dfa67879-1249-433b-b4b6-71c014d5daba" />
-<img width="1067" height="615" alt="image" src="https://github.com/user-attachments/assets/2439893a-07c8-45e6-bd44-1f2adbf76b54" />
+<img width="1068" height="609" alt="Home page" src="https://github.com/user-attachments/assets/78ee2697-6ee5-40cc-a68e-54b051a63ccd" />
+<img width="1068" height="615" alt="Product page" src="https://github.com/user-attachments/assets/dfa67879-1249-433b-b4b6-71c014d5daba" />
+<img width="1067" height="615" alt="cart" src="https://github.com/user-attachments/assets/2439893a-07c8-45e6-bd44-1f2adbf76b54" />
 
 
 ## Features
